@@ -1,0 +1,104 @@
+.modal
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(#000, 0.4)
+  z-index: 100
+
+  &__container
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 100%
+    max-width: 700px
+    background-color: #fff
+    box-sizing: border-box
+
+  &__header
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    padding: 0 40px
+    height: 70px
+    line-height: 70px
+    background-color: #eee
+
+  &__body
+    padding: 20px 40px
+    font-size: 13px
+
+  &__title
+    font-size: 22px
+    font-weight: 600
+
+  &__close
+    position: relative
+    display: inline-block
+    width: 16px
+    height: 16px
+    cursor: pointer
+    transition: $transition
+
+    &::after,
+    &::before
+      content: ''
+      width: 2px
+      height: 16px
+      background-color: #000
+      +center
+
+    &::after
+      transform: translate(-50%, -50%) rotate(45deg)
+
+    &::before
+      transform: translate(-50%, -50%) rotate(-45deg)
+
+  &__section
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+    align-items: center
+    margin: 8px 0
+
+    &.column
+      flex-direction: column
+      flex-wrap: wrap
+      align-items: flex-start
+      justify-content: flex-start
+
+  &__input-description
+    display: inline-block
+    min-width: 110px
+
+  &__input,
+  &__text-area
+    display: block
+    margin: 14px 0
+    width: 100%
+    padding: 14px
+    border: 1px solid #e0e0e0
+
+  &__input-small
+    flex-basis: 100%
+    padding: 4px 0
+    border-bottom: 1px solid #e0e0e0
+
+  &__text-area
+    resize: none
+
+  &__link,
+  &__link:active,
+  &__link:focus,
+  &__link:visited
+    color: #209bff
+    text-decoration: underline
+
+  &__submit,
+  &__submit:active,
+  &__submit:focus
+    margin: 40px 0 20px
+    width: 150px

@@ -1,0 +1,100 @@
+body
+  padding-top: 70px
+
+.container
+  padding: 20px
+  width: 1120px
+  min-width: 1120px
+  margin: 0 auto
+  box-sizing: border-box
+
+  +m(1140)
+    width: 980px
+    min-width: 980px
+
+  +m(1000)
+    width: 100%
+    min-width: 100%
+
+.header
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  display: flex
+  align-items: center
+  height: 70px
+  background-size: cover
+  background-position: center bottom
+  background-image: url('../media/bg.jpg')
+  z-index: 10
+
+  &__wrap
+    display: flex
+    flex-direction: row
+    flex-wrap: nowrap
+    align-items: center
+    justify-content: space-between
+
+  &.is-fixed
+    position: fixed
+    top: 0
+    left: 0
+    bottom: auto
+    z-index: 10
+
+  .logo
+    position: relative
+    z-index: 11
+
+  .hamburger
+    display: none
+
+    +m(1000)
+      display: inline-block
+
+  +m(1000)
+    top: 0
+
+.footer
+  background-image: url('../media/bg.jpg')
+  background-size: cover
+  background-position: center bottom
+  color: $textLight
+
+.footer
+  display: flex
+  background-position: center top
+
+  &__wrap
+    margin: 55px auto 75px
+    display: flex
+    flex-direction: row
+    position: relative
+
+    +m(1000)
+      flex-wrap: wrap
+
+  &__col
+    margin-right: 96px
+
+    +m(1000)
+      margin-bottom: 30px
+
+    &:last-child
+      margin-right: 0
+  
+  &__title
+    margin-bottom: 18px
+    font-weight: 100
+
+  .copyright
+    position: absolute
+    right: 0
+    bottom: 0
+
+    +m(1000)
+      position: relative
+      margin-top: 30px
+      width: 100%
+      text-align: center

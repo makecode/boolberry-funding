@@ -1,0 +1,5 @@
+export const PROGRESS_MODAL = 'PROGRESS_MODAL';
+export const CONTRIBUTE_MODAL = 'CONTRIBUTE_MODAL';
+export const VOTE_MODAL = 'VOTE_MODAL';
+export const VOTE_MODAL_TWO = 'VOTE_MODAL_TWO';
+export const PROPOSAL_MODAL = 'PROPOSAL_MODAL';

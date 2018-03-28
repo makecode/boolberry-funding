@@ -1,0 +1,10 @@
+#directories
+.idea
+.vs
+node_modules
+
+#npm
+package-lock.json
+
+#etc
+.DC_Store

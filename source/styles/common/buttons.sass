@@ -1,0 +1,46 @@
+.btn,
+.btn:active,
+.btn:focus,
+.btn:visited
+  display: inline-block
+  width: 180px
+  height: 46px
+  line-height: 42px
+  box-sizing: border-box
+  border: 1px solid #ffffff
+  transition: $transition
+  background-color: transparent
+  font-size: 16px
+  font-weight: 100
+
+  &:hover
+    border-color: $buttonHover
+    background-color: $buttonHover
+    color: $textDefault
+
+    svg
+      fill: $textDefault
+
+  &:focus
+    outline: none
+    box-shadow: 0 0 10px $buttonHover
+
+
+  .icon
+    position: relative
+    margin-right: 8px
+    font-size: 14px
+    top: 1px
+
+.btn-group
+  display: inline-flex
+  flex-direction: row
+
+  +m(1000)
+    flex-direction: column
+
+  &__el
+    margin: 0 6px
+
+    +m(1000)
+      margin: 10px 0
