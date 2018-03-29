@@ -5,47 +5,53 @@ import Button from '../../Button/Button';
 
 class ProposalModal extends PureComponent {
   static propTypes = {
-    className: PropTypes.string,
     data: PropTypes.object
   };
 
   static defaultProps = {
-    className: '',
     data: {}
   };
 
 
   render() {
-    const { className, data } = this.props;
+    const { data } = this.props;
 
     return (
-      <div className={`proposal-modal ${className}`}>
-        <div className='modal__section modal__section column'>
-          <span className='modal__input-description'>Title</span>
-          <input type='text' className='modal__input'/>
-        </div>
+      <div className='modal-content proposal-modal'>
+        <dl className='modal-content__list-values column'>
+          <dt>Title</dt>
+          <dd>
+            <input type='text' className='modal-content__input'/>
+          </dd>
+        </dl>
 
-        <div className='modal__section column'>
-          <span className='modal__input-description'>Description</span>
-          <textarea rows='4' className='modal__text-area'/>
-        </div>
+        <dl className='modal-content__list-values column'>
+          <dt>Description</dt>
+          <dd>
+            <textarea rows='4' className='modal-content__text-area'/>
+          </dd>
+        </dl>
 
-        <div className='modal__section'>
-          <span className='modal__input-description'>Alias Validation</span>
-          <a className='modal__link' href='#'>What is it?</a>
-        </div>
+        <dl className='modal-content__list-values'>
+          <dt>Alias Validation</dt>
+          <dd>
+            <a className='modal-content__link' href='#'>What is it?</a>
+          </dd>
+        </dl>
 
-        <div className='modal__section'>
-          <span className='modal__input-description'>Ver string</span>
-          <span className=''>test</span>
-        </div>
+        <dl className='modal-content__list-values'>
+          <dt>Ver string</dt>
+          <dd>test</dd>
+        </dl>
 
-        <div className='modal__section'>
-          <span className='modal__input-description'>Signature</span>
-          <input className='modal__input-small' type='text'/>
-        </div>
+        <dl className='modal-content__list-values'>
+          <dt>Signature</dt>
+          <dd>
+            <input className='modal-content__input-small' type='text'/>
+          </dd>
+        </dl>
 
-        <Button className='modal__submit'>Submit</Button>
+        <Button className='modal-content__submit'>Submit</Button>
       </div>
     )
   }

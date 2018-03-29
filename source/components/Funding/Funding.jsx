@@ -8,7 +8,7 @@ import Button from './../Button/Button';
 import Icon from './../Icon/Icon';
 import Progress from './../Progress/Progress';
 
-import { PROGRESS_MODAL, CONTRIBUTE_MODAL, VOTE_MODAL, VOTE_MODAL_TWO, PROPOSAL_MODAL } from '../../framework/modals';
+import { PROGRESS_MODAL, CONTRIBUTE_MODAL, VOTE_MODAL, PROPOSAL_MODAL } from '../../framework/modals';
 
 import { tableInProgress, tableFunding, tableProposals } from './../../framework/constants';
 
@@ -21,28 +21,18 @@ class Funding extends Component {
     showModal: () => {}
   };
 
-  onProgressClick = () => {
-    this.props.showModal('In Progress', PROGRESS_MODAL, {data: 'test'});
-  };
+  onRowClick = (title, type, data) => this.props.showModal(title, type, { data });
 
   onProposalClick = () => {
     this.props.showModal('Create proposal', PROPOSAL_MODAL, {data: 'test'});
   };
 
-  onContributeClick = () => {
-    this.props.showModal('Contribute', CONTRIBUTE_MODAL, {data: 'test'});
-  };
-
-  onVoteClick = () => {
-    this.props.showModal('VOTE', VOTE_MODAL, {data: 'test'});
-  };
-
-
   getProgressRows = (rows) => rows.map((row, index) => {
-    const { title, propose, funded, progress, progressDescription, date } = row;
+    const { title, proposed, funded, progressDevelopment, date } = row;
+    const { description, progress } = progressDevelopment;
 
     return (
-      <TableRow key={index} onClick={this.onProgressClick}>
+      <TableRow key={index} onClick={() => this.onRowClick('In Progress', PROGRESS_MODAL, row)}>
         <TableCol>
           <span className='table__text'>
             {title}
@@ -50,14 +40,14 @@ class Funding extends Component {
         </TableCol>
         <TableCol>
           <Icon ico='man' />
-          <span className='table__text'>{propose}</span>
+          <span className='table__text'>Proposed by {proposed}</span>
         </TableCol>
         <TableCol>
-          <Icon ico='done' />
-          <span className='table__text'>{funded}</span>
+          <Icon ico='check' />
+          <span className='table__text'>Funded by {funded}</span>
         </TableCol>
         <TableCol>
-          <Progress progress={progress} title={progressDescription} />
+          <Progress progress={progress} title={description} />
         </TableCol>
         <TableCol>
           <span className='table__text'>
@@ -69,10 +59,11 @@ class Funding extends Component {
   });
 
   getFundingRows = (rows) => rows.map((row, index) => {
-    const { title, propose, funded, progress, progressDescription } = row;
+    const { title, propose, progressFunding } = row;
+    const { description, progress } = progressFunding;
 
     return (
-      <TableRow key={index} onClick={this.onContributeClick}>
+      <TableRow key={index} onClick={() => this.onRowClick('Contribute', CONTRIBUTE_MODAL, row)}>
         <TableCol>
           <span className='table__text'>
             {title}
@@ -80,27 +71,27 @@ class Funding extends Component {
         </TableCol>
         <TableCol>
           <Icon ico='man' />
-          <span className='table__text'>{propose}</span>
+          <span className='table__text'>Proposed by {propose}</span>
         </TableCol>
         <TableCol>
           <Icon ico='stats' />
-          <span className='table__text'>{funded}</span>
+          <span className='table__text'>Funding in progress</span>
         </TableCol>
         <TableCol>
-          <Progress className='blue' progress={progress} title={progressDescription} />
+          <Progress className='blue' progress={progress} title={description} />
         </TableCol>
         <TableCol>
-          <Button onClick={this.onContributeClick}>Contribute</Button>
+          <Button onClick={() => this.onRowClick('Contribute', CONTRIBUTE_MODAL, row)}>Contribute</Button>
         </TableCol>
       </TableRow>
     );
   });
 
   getProposalsRows = (rows) => rows.map((row, index) => {
-    const { title, propose, description } = row;
+    const { title, proposed, description } = row;
 
     return (
-      <TableRow key={index} onClick={this.onVoteClick}>
+      <TableRow key={index} onClick={() => this.onRowClick('VOTE', VOTE_MODAL, row)}>
         <TableCol>
           <span className='table__text'>
             {title}
@@ -108,7 +99,7 @@ class Funding extends Component {
         </TableCol>
         <TableCol>
           <Icon ico='man' />
-          <span className='table__text'>{propose}</span>
+          <span className='table__text'>Proposed by {proposed}</span>
         </TableCol>
         <TableCol>
           <span className='table__text'>
@@ -116,7 +107,7 @@ class Funding extends Component {
           </span>
         </TableCol>
         <TableCol>
-          <Button className='btn-transparent' onClick={this.onVoteClick}>Vote</Button>
+          <Button className='btn-transparent' onClick={() => this.onRowClick('VOTE', VOTE_MODAL, row)}>Vote</Button>
         </TableCol>
       </TableRow>
     );
@@ -149,14 +140,16 @@ class Funding extends Component {
           <div className='funding__el'>
             <h3 className="funding__title">
               <span className="funding__title-text">Proposals</span>
-              <Button className="funding__title-btn btn btn-transparent btn-inline" onClick={this.onProposalClick}>+ Submit proposals</Button>
+              <Button
+                className="funding__title-btn btn btn-transparent btn-inline"
+                onClick={this.onProposalClick}>
+                + Submit proposals
+              </Button>
             </h3>
             <Table size='four'>
               {this.getProposalsRows(tableProposals)}
             </Table>
           </div>
-
-          {/*<Progress title='1 of 10 milestones' progress={94} />*/}
         </Container>
       </div>
     )

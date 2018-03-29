@@ -1,51 +1,55 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../Button/Button';
+import Icon from '../../Icon/Icon';
+import Progress from '../../Progress/Progress';
 
 class ContributeModal extends PureComponent {
   static propTypes = {
-    className: PropTypes.string,
     data: PropTypes.object
   };
 
   static defaultProps = {
-    className: '',
     data: {}
   };
 
 
   render() {
-    const { className } = this.props;
+    const { data } = this.props;
+    const {
+      title, proposed, progressFunding, contributorsTitle, contributorsCounter, description,
+      address, paymentId, slackUrl
+    } = data;
 
     return (
-      <div className={`contribute-modal ${className}`}>
-        <div className='modal__section modal__section column'>
-          <span className='modal__input-description'>Title</span>
-          <input type='text' className='modal__input'/>
+      <div className='modal-content contribute-modal'>
+        <div className='modal-content__proposed'>
+          <Icon ico='man' />
+          <span>Proposed by {proposed}</span>
         </div>
-
-        <div className='modal__section column'>
-          <span className='modal__input-description'>Description</span>
-          <textarea rows='4' className='modal__text-area'/>
+        <div className='modal-content__title'>{title}</div>
+        <Progress className='blue' progress={progressFunding.progress} title={progressFunding.description} />
+        <div className='modal-content__contributors'>
+          <span className='modal-content__contributors-name'>Contributors: {contributorsTitle} </span>
+          <span className='modal-content__contributors-counter'>({contributorsCounter})</span>
         </div>
+        <div className='modal-content__description'>{description}</div>
 
-        <div className='modal__section'>
-          <span className='modal__input-description'>Alias Validation</span>
-          <a className='modal__link' href='#'>What is it?</a>
+        <dl className='modal-content__list-values'>
+          <dt>Address:</dt>
+          <dd>{address}</dd>
+        </dl>
+        <dl className='modal-content__list-values'>
+          <dt>Payment ID:</dt>
+          <dd>{paymentId}</dd>
+        </dl>
+        <a className='modal-content__slack' href={slackUrl}>
+          <Icon ico='slack' />
+          <span>Task channel</span>
+        </a>
+        <div className='modal-content__footnote'>
+          *Your contribution should be visible within 5 minutes, please contact the team if it’s not
         </div>
-
-        <div className='modal__section'>
-          <span className='modal__input-description'>Ver string</span>
-          <span className=''>test</span>
-        </div>
-
-        <div className='modal__section'>
-          <span className='modal__input-description'>Signature</span>
-          <input className='modal__input-small' type='text'/>
-        </div>
-
-        <Button className='modal__submit'>Submit</Button>
       </div>
     )
   }

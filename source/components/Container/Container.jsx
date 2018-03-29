@@ -1,13 +1,9 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
-class Container extends PureComponent {
-  render() {
-    return (
-      <div className='container'>
-        {this.props.children}
-      </div>
-    )
-  }
-}
+const Container = (props) => (
+  <div className='container'>
+    {props.children}
+  </div>
+);
 
 export default Container;

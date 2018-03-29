@@ -15,6 +15,7 @@
     width: 100%
     max-width: 700px
     background-color: #fff
+    color: #3a3a3a
     box-sizing: border-box
 
   &__header
@@ -30,6 +31,7 @@
   &__body
     padding: 20px 40px
     font-size: 13px
+    font-weight: 400
 
   &__title
     font-size: 22px
@@ -57,7 +59,36 @@
     &::before
       transform: translate(-50%, -50%) rotate(-45deg)
 
-  &__section
+.modal-content
+
+  &__title
+    margin: 20px 0
+    font-size: 20px
+    font-weight: 400
+
+  &__votes
+    margin-left: 10px
+    color: #209bff
+
+  &__proposed,
+
+    .icon
+      top: 2px
+      margin-right: 4px
+
+  &__upvoted
+
+    .icon
+      top: 2px
+      margin: 0 3px 0 8px
+
+  &__contributors
+    margin: 20px 0
+
+  &__description
+    margin: 20px 0
+
+  &__list-values
     display: flex
     flex-direction: row
     flex-wrap: nowrap
@@ -68,27 +99,15 @@
       flex-direction: column
       flex-wrap: wrap
       align-items: flex-start
-      justify-content: flex-start
 
-  &__input-description
-    display: inline-block
-    min-width: 110px
+    dt
+      min-width: 110px
 
-  &__input,
-  &__text-area
-    display: block
-    margin: 14px 0
-    width: 100%
-    padding: 14px
-    border: 1px solid #e0e0e0
-
-  &__input-small
-    flex-basis: 100%
-    padding: 4px 0
-    border-bottom: 1px solid #e0e0e0
-
-  &__text-area
-    resize: none
+    dd
+      width: 100%
+      text-overflow: ellipsis
+      white-space: nowrap
+      overflow: hidden
 
   &__link,
   &__link:active,
@@ -97,8 +116,66 @@
     color: #209bff
     text-decoration: underline
 
+  &__input,
+  &__text-area
+    display: block
+    margin: 14px 0
+    width: 100%
+    flex-basis: 100%
+    padding: 14px
+    border: 1px solid #e0e0e0
+
+    &:focus
+      outline: none
+
+  &__text-area
+    resize: none
+
+  &__input-small
+    width: 100%
+    padding: 2px 0
+    border-bottom: 1px solid #e0e0e0
+
+    &:focus
+      outline: none
+
   &__submit,
   &__submit:active,
   &__submit:focus
-    margin: 40px 0 20px
+    margin: 30px 0 20px
     width: 150px
+
+  &__slack,
+  &__slack:active,
+  &__slack:focus,
+  &__slack:visited
+    display: inline-block
+    text-decoration: none
+    color: #3a3a3a
+    margin: 20px 0
+
+    .icon
+      top: 2px
+      margin-right: 5px
+
+  &__footnote
+    margin-top: 10px
+    color: #757575
+
+.milestones
+  display: flex
+  flex-direction: column
+  margin-top: 10px
+
+.milestone
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+  margin: 10px 0
+
+  &__left
+    min-width: 26px
+
+  &__title
+    display: inline-block
+    margin-bottom: 2px

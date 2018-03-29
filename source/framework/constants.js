@@ -99,68 +99,66 @@ export const footerColumns = [
 export const tableInProgress = [
   {
     title: 'LMDB',
-    propose: 'Proposed by Labs',
-    funded: 'Funded by Labs',
-    progress: 10,
-    progressDescription: '1 of 10 milestones',
-    date: 'Roadmap / June 2018'
-  },
-  {
-    title: 'Wallet GUI Redesign',
-    propose: 'Proposed by Labs',
-    funded: 'Funded by Labs',
-    progress: 0,
-    progressDescription: '0 of 2 milestones',
-    date: 'Roadmap / June 2018'
-  },
-  {
-    title: 'Instructional Video',
-    propose: 'Proposed by Labs',
-    funded: 'Funded by Community',
-    progress: 37.5,
-    progressDescription: '3 of 8 milestones',
-    date: 'Roadmap / Sept 2018'
+    proposed: 'Labs',
+    funded: 'Huyabs',
+    contributorsTitle: 'Labs',
+    contributorsCounter: '2',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad beatae blanditiis ducimus illum ipsam natus porro ratione vitae voluptatem voluptatum. Adipisci animi at dignissimos dolores ex magni quasi repellat voluptas.',
+    progressFunding: {
+      description: '20 out of 20 BTC',
+      progress: 100
+    },
+    progressDevelopment: {
+      description: '1 of 2 milestones',
+      progress: 50
+    },
+    milestones: [
+      {
+        status: 'done',
+        title: 'Milestone 1. Fill the aplication form.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      },
+      {
+        status: 'progress',
+        title: 'Milestone 2. Get things done.',
+        description: 'Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo.'
+      }
+    ],
+    date: 'Roadmap / June 2018',
+    slackUrl: '#'
   }
 ];
 
 export const tableFunding = [
   {
     title: 'HitBtc listing',
-    propose: 'Proposed by Labs',
-    funded: 'Funding in progress',
-    progress: 50,
-    progressDescription: '2 out of 20 BTC'
-  },
-  {
-    title: 'Cz’s massage chair',
-    propose: 'Proposed by Labs',
-    funded: 'Funding in progress',
-    progress: 0,
-    progressDescription: '100 of out 200k BBR'
-  },
-  {
-    title: 'BBR Themed party',
-    propose: 'Proposed by random Guy',
-    funded: 'Funding in progress',
-    progress: 80,
-    progressDescription: '80k out of 100k BBR'
+    proposed: 'Proposed by Labs',
+    contributorsCounter: '2',
+    contributorsTitle: 'Labs',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    progressFunding: {
+      description: '2 out of 20 BTC',
+      progress: 20
+    },
+    address: 'Yaowarat, 3',
+    paymentId: '666c75666679706f6e7920697320746865206265737420706f6e792065766572'
   }
 ];
 
 export const tableProposals = [
   {
     title: 'KuCoin listing',
-    propose: 'Proposed by Labs',
-    description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita repellendus voluptates libero praesentium! Non, molestias.'
+    proposed: 'Labs',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    verString: 'k342047294jgqg8'
   },
   {
-    title: 'Let’s do something',
-    propose: 'Proposed by Community',
-    description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas repudiandae non reiciendis aut, accusamus corrupti!'
-  },
-  {
-    title: 'Academic Research',
-    propose: 'Proposed by Random Guy',
-    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium itaque adipisci, ex iure praesentium facilis!'
+    title: 'KuCoin listing',
+    proposed: 'Labs',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    verString: 'k342047294jgqg8',
+    votes: 10,
+    upvotedTitle: 'Labs',
+    upvotedCounter: 2
   }
 ];
