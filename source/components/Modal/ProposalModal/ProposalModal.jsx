@@ -14,7 +14,6 @@ class ProposalModal extends PureComponent {
 
 
   render() {
-    const { data } = this.props;
 
     return (
       <div className='modal-content proposal-modal'>

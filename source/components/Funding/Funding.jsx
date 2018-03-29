@@ -24,7 +24,7 @@ class Funding extends Component {
   onRowClick = (title, type, data) => this.props.showModal(title, type, { data });
 
   onProposalClick = () => {
-    this.props.showModal('Create proposal', PROPOSAL_MODAL, {data: 'test'});
+    this.props.showModal('Create proposal', PROPOSAL_MODAL, { data: {} });
   };
 
   getProgressRows = (rows) => rows.map((row, index) => {
@@ -91,7 +91,7 @@ class Funding extends Component {
     const { title, proposed, description } = row;
 
     return (
-      <TableRow key={index} onClick={() => this.onRowClick('VOTE', VOTE_MODAL, row)}>
+      <TableRow key={index} onClick={() => this.onRowClick('Vote', VOTE_MODAL, row)}>
         <TableCol>
           <span className='table__text'>
             {title}
@@ -107,7 +107,7 @@ class Funding extends Component {
           </span>
         </TableCol>
         <TableCol>
-          <Button className='btn-transparent' onClick={() => this.onRowClick('VOTE', VOTE_MODAL, row)}>Vote</Button>
+          <Button className='btn-transparent' onClick={() => this.onRowClick('Vote', VOTE_MODAL, row)}>Vote</Button>
         </TableCol>
       </TableRow>
     );
