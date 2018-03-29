@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-import { PROGRESS_MODAL, PROPOSAL_MODAL } from '../../framework/modals';
+import { PROGRESS_MODAL, CONTRIBUTE_MODAL, VOTE_MODAL, PROPOSAL_MODAL } from '../../framework/modals';
+
 import ProposalModal from './ProposalModal/ProposalModal';
+import ContributeModal from './ContributeModal/ContributeModal';
+import VoteModal from './VoteModal/VoteModal';
 import ProgressModal from './ProgressModal/ProgressModal';
 
 class ModalContainer extends Component {
@@ -35,10 +38,13 @@ class ModalContainer extends Component {
   getModal = (type, data) => {
     switch (type) {
       case PROGRESS_MODAL:
-        return <ProgressModal {...data} />
+        return <ProgressModal {...data} />;
+      case CONTRIBUTE_MODAL:
+        return <ContributeModal {...data} />;
+      case VOTE_MODAL:
+        return <VoteModal {...data} />;
       case PROPOSAL_MODAL:
         return <ProposalModal {...data} />;
-
       default:
         return;
     }

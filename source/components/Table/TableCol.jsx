@@ -1,26 +1,24 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class TableCol extends PureComponent {
-  static propTypes = {
-    className: PropTypes.string,
-    children: PropTypes.any
-  };
+const TableCol = (props) => {
+  const { className, children } = props;
 
-  static defaultProps = {
-    className: ''
-  };
+  return (
+    <div className={`table__col ${className}`}>
+      {children}
+    </div>
+  );
+};
 
+TableCol.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.any
+};
 
-  render() {
-    const { className, children } = this.props;
+TableCol.defaultProps = {
+  className: ''
+};
 
-    return (
-      <div className={`table__col ${className}`}>
-        {children}
-      </div>
-    )
-  }
-}
 
 export default TableCol;

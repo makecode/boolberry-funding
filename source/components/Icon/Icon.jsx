@@ -1,25 +1,22 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-class Icon extends PureComponent {
-  static propTypes = {
-    className: PropTypes.string,
-    ico: PropTypes.string
-  };
+const Icon = (props) => {
+  const { className, ico } = props;
 
-  static defaultProps = {
-    className: '',
-    ico: ''
-  };
+  return (
+    <span className={`icon icon-${ico} ${className}`} />
+  )
+};
 
+Icon.propTypes = {
+  className: PropTypes.string,
+  ico: PropTypes.string
+};
 
-  render() {
-    const { className, ico } = this.props;
-
-    return (
-      <span className={`icon icon-${ico} ${className}`} />
-    )
-  }
-}
+Icon.defaultProps = {
+  className: '',
+  ico: ''
+};
 
 export default Icon;

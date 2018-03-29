@@ -2,55 +2,53 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Container from './../Container/Container';
 
-class Footer extends PureComponent {
-  static propTypes = {
-    columns: PropTypes.array
-  };
+const getLi = (list) => list.map((li, index) => {
+  const target = li.blank ? '_blank' : '_self';
 
-  static defaultProps = {
-    columns: []
-  };
+  return (
+    <li className="list__el" key={index}>
+      <a className="list__link" href={li.href} target={target}>
+        {li.icon ? (<span className={`list__icon ${li.icon}`} />) : false}
+        <span className='list__text'>{li.name}</span>
+      </a>
+    </li>
+  );
+});
 
-  getLi = (list) => list.map((li, index) => {
-    const target = li.blank ? '_blank' : '_self';
+const getColumns = (cols) => cols.map((col, index) => {
+  const { title, items } = col;
 
-    return (
-      <li className="list__el" key={index}>
-        <a className="list__link" href={li.href} target={target}>
-          {li.icon ? (<span className={`list__icon ${li.icon}`} />) : false}
-          <span className='list__text'>{li.name}</span>
-        </a>
-      </li>
-    );
-  });
+  return (
+    <div className="footer__col" key={index}>
+      <h3 className="footer__title">{title}</h3>
+      <ul className="list">
+        {items.length ? getLi(items) : false}
+      </ul>
+    </div>
+  );
+});
 
-  getColumns = (cols) => cols.map((col, index) => {
-    const { title, items } = col;
+const Footer = (props) => {
+  const { columns } = props;
 
-    return (
-      <div className="footer__col" key={index}>
-        <h3 className="footer__title">{title}</h3>
-        <ul className="list">
-          {items.length ? this.getLi(items) : false}
-        </ul>
-      </div>
-    );
-  });
+  return (
+    <footer className='footer'>
+      <Container>
+        <div className="footer__wrap">
+          {getColumns(columns)}
+          <div className="copyright">© 2018 Boolberry.com</div>
+        </div>
+      </Container>
+    </footer>
+  );
+};
 
-  render() {
-    const { columns } = this.props;
+Footer.propTypes = {
+  columns: PropTypes.array
+};
 
-    return (
-      <footer className='footer'>
-        <Container>
-          <div className="footer__wrap">
-            {this.getColumns(columns)}
-            <div className="copyright">© 2018 Boolberry.com</div>
-          </div>
-        </Container>
-      </footer>
-    )
-  }
-}
+Footer.defaultProps = {
+  columns: []
+};
 
 export default Footer;

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-class Progress extends PureComponent {
+class Button extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.any,
@@ -30,4 +30,4 @@ class Progress extends PureComponent {
   }
 }
 
-export default Progress;
+export default Button;
