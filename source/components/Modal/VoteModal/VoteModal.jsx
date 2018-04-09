@@ -43,6 +43,12 @@ class VoteModal extends PureComponent {
           </dd>
         </dl>
         <dl className='modal-content__list-values'>
+          <dt>Alias</dt>
+          <dd>
+            <input className='modal-content__input-small' type='text'/>
+          </dd>
+        </dl>
+        <dl className='modal-content__list-values'>
           <dt>Ver string:</dt>
           <dd>{verString}</dd>
         </dl>

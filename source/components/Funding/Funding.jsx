@@ -138,7 +138,6 @@ class Funding extends Component {
   renderEmpty = (context) => {
     return (
       <div className='funding__empty'>
-        <h4>Empty</h4>
         <p>No items in {context}</p>
       </div>
     );

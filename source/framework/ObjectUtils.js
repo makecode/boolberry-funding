@@ -33,7 +33,7 @@ class ObjectUtils {
     const milestones = row.milestones.length ? this.transformMilestones(row.milestones) : [];
 
     return {
-      milestones,
+      milestones: milestones.milestones,
       title: row.title,
       proposed: row.alias,
       funded: row.funded,
@@ -54,7 +54,6 @@ class ObjectUtils {
   });
 
   transformFundingTable = (rows) => rows.map((row) => {
-
     return {
       title: row.title,
       proposed: row.proposed,
@@ -62,8 +61,8 @@ class ObjectUtils {
       contributorsTitle: row.contributorsTitle,
       description: row.description,
       progressFunding: {
-        description: '2 out of 20 BBR',
-        progress: 20
+        description: `${row.bbr} out of ${row.bbr_max} BBR`,
+        progress: 100 / row.bbr * row.bbr
       },
       address: row.address,
       paymentId: row.paymentId
