@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './Header/Header';
-import Hero from './Hero/Hero';
+// import Hero from './Hero/Hero';
 import Funding from './Funding/Funding';
 import Footer from './Footer/Footer';
 import ModalContainer from './Modal/ModalContainer';
@@ -52,7 +52,7 @@ class App extends Component {
     return (
       <div className='app'>
         <Header logo={logo} nav={headerNavLinks} />
-        <Hero />
+        {/*<Hero />*/}
         <Funding showModal={this.showModal} />
         <Footer columns={footerColumns} />
         {showModal && <ModalContainer {...modalProps} />}
