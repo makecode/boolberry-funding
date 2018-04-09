@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import axios from 'axios';
 import ObjectUtils from '../../framework/ObjectUtils';
+import Session from '../../framework/SessionStorage';
 
 import Container from './../Container/Container';
 import Table from './../Table/Table';
@@ -46,12 +47,20 @@ class Funding extends Component {
   onRowClick = (title, type, data) => this.props.showModal(title, type, { data });
 
   onProposalClick = () => {
-    axios.get('https://boolberry.com/API/gen_string.php')
-      .then((response) => {
-        const verificationCode = response.data.result;
-        this.props.showModal('Create proposal', PROPOSAL_MODAL, { verificationCode });
-      })
-      .catch((error) => console.error(error));
+    let verificationCode = null;
+
+    if (Session.has('verCode')) {
+      verificationCode = Session.get('verCode');
+      this.props.showModal('Create proposal', PROPOSAL_MODAL, { verificationCode });
+    } else {
+      axios.get('https://boolberry.com/API/gen_string.php')
+        .then((response) => {
+          verificationCode = response.data.result;
+          Session.set('verCode', verificationCode);
+          this.props.showModal('Create proposal', PROPOSAL_MODAL, { verificationCode });
+        })
+        .catch((error) => console.error(error));
+    }
   };
 
   getProgressRows = (rows) => rows.map((row, index) => {
