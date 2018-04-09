@@ -47,6 +47,9 @@ const common = merge([
 module.exports = function(env) {
   if (env === 'development') {
     return merge([
+			{
+        devtool: 'cheap-module-source-map'
+			},
 			common,
 			devserver(),
 			sass(),

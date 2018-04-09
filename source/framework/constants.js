@@ -96,6 +96,10 @@ export const footerColumns = [
   }
 ];
 
+export const OBJECT_KEY_PROGRESS = 'progress';
+export const OBJECT_KEY_FUNDING = 'funding';
+export const OBJECT_KEY_PROPOSALS = 'proposals';
+
 export const tableInProgress = [
   {
     title: 'LMDB',

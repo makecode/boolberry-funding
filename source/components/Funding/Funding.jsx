@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+import axios from 'axios';
+import ObjectUtils from '../../framework/ObjectUtils';
+
 import Container from './../Container/Container';
 import Table from './../Table/Table';
 import TableRow from './../Table/TableRow';
@@ -9,8 +13,7 @@ import Icon from './../Icon/Icon';
 import Progress from './../Progress/Progress';
 
 import { PROGRESS_MODAL, CONTRIBUTE_MODAL, VOTE_MODAL, PROPOSAL_MODAL } from '../../framework/modals';
-
-import { tableInProgress, tableFunding, tableProposals } from './../../framework/constants';
+// import { tableInProgress, tableFunding, tableProposals } from './../../framework/constants';
 
 class Funding extends Component {
   static propTypes = {
@@ -20,6 +23,25 @@ class Funding extends Component {
   static defaultProps = {
     showModal: () => {}
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      tableData: {}
+    };
+  }
+
+  componentDidMount() {
+    axios.get('https://boolberry.com/API/get_proposal.php')
+      .then((response) => {
+        const data = ObjectUtils.transformTableData(response.data);
+
+        this.setState(() => ({
+          tableData: data
+        }))
+      })
+      .catch((error) => console.error(error));
+  }
 
   onRowClick = (title, type, data) => this.props.showModal(title, type, { data });
 
@@ -114,7 +136,8 @@ class Funding extends Component {
   });
 
   render() {
-    const {} = this.props;
+    const { tableData } = this.state;
+    const { progress, funding, proposals } = tableData;
 
     return (
       <div className='funding'>
@@ -124,7 +147,7 @@ class Funding extends Component {
               <span className="funding__title-text">In progress/Scheduled</span>
             </h3>
             <Table>
-              {this.getProgressRows(tableInProgress)}
+              { progress ? this.getProgressRows(progress) : false }
             </Table>
           </div>
 
@@ -133,7 +156,7 @@ class Funding extends Component {
               <span className="funding__title-text">Funding</span>
             </h3>
             <Table>
-              {this.getFundingRows(tableFunding)}
+              { funding ? this.getFundingRows(funding) : false }
             </Table>
           </div>
 
@@ -147,7 +170,7 @@ class Funding extends Component {
               </Button>
             </h3>
             <Table size='four'>
-              {this.getProposalsRows(tableProposals)}
+              { funding ? this.getProposalsRows(proposals) : false}
             </Table>
           </div>
         </Container>
