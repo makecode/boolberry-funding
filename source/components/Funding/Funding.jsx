@@ -46,7 +46,12 @@ class Funding extends Component {
   onRowClick = (title, type, data) => this.props.showModal(title, type, { data });
 
   onProposalClick = () => {
-    this.props.showModal('Create proposal', PROPOSAL_MODAL, { data: {} });
+    axios.get('https://boolberry.com/API/gen_string.php')
+      .then((response) => {
+        const verificationCode = response.data.result;
+        this.props.showModal('Create proposal', PROPOSAL_MODAL, { verificationCode });
+      })
+      .catch((error) => console.error(error));
   };
 
   getProgressRows = (rows) => rows.map((row, index) => {

@@ -5,15 +5,16 @@ import Button from '../../Button/Button';
 
 class ProposalModal extends PureComponent {
   static propTypes = {
-    data: PropTypes.object
+    verificationCode: PropTypes.string
   };
 
   static defaultProps = {
-    data: {}
+    verificationCode: ''
   };
 
 
   render() {
+    const { verificationCode } = this.props;
 
     return (
       <div className='modal-content proposal-modal'>
@@ -47,7 +48,7 @@ class ProposalModal extends PureComponent {
 
         <dl className='modal-content__list-values'>
           <dt>Ver string</dt>
-          <dd>test</dd>
+          <dd>{verificationCode}</dd>
         </dl>
 
         <dl className='modal-content__list-values'>
