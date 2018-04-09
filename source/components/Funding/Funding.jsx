@@ -135,29 +135,52 @@ class Funding extends Component {
     );
   });
 
+  renderEmpty = (context) => {
+    return (
+      <div className='funding__empty'>
+        <h4>Empty</h4>
+        <p>No items in {context}</p>
+      </div>
+    );
+  };
+
   render() {
     const { tableData } = this.state;
-    const { progress, funding, proposals } = tableData;
+    const { progress = [], funding = [], proposals = [] } = tableData;
 
     return (
       <div className='funding'>
         <Container>
-          <div className='funding__el'>
+          <div className='funding__el' id='progress'>
             <h3 className="funding__title">
               <span className="funding__title-text">In progress/Scheduled</span>
             </h3>
-            <Table>
-              { progress ? this.getProgressRows(progress) : false }
-            </Table>
+
+            {progress.length ? (
+              <Table>
+                { this.getProgressRows(progress) }
+              </Table>
+            ) : (
+              <div>
+                {this.renderEmpty('Progress')}
+              </div>
+            )}
           </div>
 
-          <div className='funding__el'>
+          <div className='funding__el' id='funding'>
             <h3 className="funding__title">
               <span className="funding__title-text">Funding</span>
             </h3>
-            <Table>
-              { funding ? this.getFundingRows(funding) : false }
-            </Table>
+
+            {funding.length ? (
+              <Table>
+                { this.getFundingRows(funding) }
+              </Table>
+            ) : (
+              <div>
+                { this.renderEmpty('Funding') }
+              </div>
+            )}
           </div>
 
           <div className='funding__el'>
@@ -169,9 +192,16 @@ class Funding extends Component {
                 + Submit proposals
               </Button>
             </h3>
-            <Table size='four'>
-              { funding ? this.getProposalsRows(proposals) : false}
-            </Table>
+
+            {proposals.length ? (
+              <Table size='four'>
+                { this.getProposalsRows(proposals) }
+              </Table>
+            ) : (
+              <div>
+                { this.renderEmpty('Proposals') }
+              </div>
+            )}
           </div>
         </Container>
       </div>

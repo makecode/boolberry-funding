@@ -41,8 +41,8 @@ class ObjectUtils {
       contributorsCounter: row.contributorsCounter,
       description: row.description,
       progressFunding: {
-        description: `${row.btc} out of ${row.btc_max} BTC`,
-        progress: 100 / row.btc_max * row.btc
+        description: `${row.bbr} out of ${row.bbr} BBR`,
+        progress: 100 / row.bbr * row.bbr
       },
       progressDevelopment: {
         description: `${milestones.done} of ${milestones.all} milestones`,
@@ -54,6 +54,7 @@ class ObjectUtils {
   });
 
   transformFundingTable = (rows) => rows.map((row) => {
+
     return {
       title: row.title,
       proposed: row.proposed,
@@ -61,7 +62,7 @@ class ObjectUtils {
       contributorsTitle: row.contributorsTitle,
       description: row.description,
       progressFunding: {
-        description: '2 out of 20 BTC',
+        description: '2 out of 20 BBR',
         progress: 20
       },
       address: row.address,
@@ -95,7 +96,7 @@ class ObjectUtils {
     }
 
     if (funding.length) {
-      funding = this.transformFundingTable(progress);
+      funding = this.transformFundingTable(funding);
       dataTable[OBJECT_KEY_FUNDING] = funding;
     }
 
