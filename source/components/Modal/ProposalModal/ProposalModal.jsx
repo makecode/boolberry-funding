@@ -1,27 +1,22 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import Button from '../../Button/Button';
+import Session from '../../../framework/SessionStorage';
 
 class ProposalModal extends PureComponent {
-  static propTypes = {
-    verificationCode: PropTypes.string
-  };
-
-  static defaultProps = {
-    verificationCode: ''
-  };
-
   constructor(props) {
     super(props);
 
     this.state = {
-      title: '',
-      description: '',
       alias: '',
-      signature: ''
+      signature: '',
+      verificationCode: ''
     }
+  }
+
+  componentDidMount() {
+    this.getVerificationCode();
   }
 
   handleChangeTitle = (event) => {
@@ -63,13 +58,19 @@ class ProposalModal extends PureComponent {
 
     const data = {
       alias: this.state.alias,
-      ver_string: this.props.verificationCode,
+      ver_string: this.state.verificationCode,
       signature: this.state.signature
     };
 
     axios.post('https://boolberry.com/API/validate.php', data)
-      .then(() => {
-        this.submitSuccess();
+      .then((response) => {
+        const status = response.data.result.status;
+
+        if (status === 'OK') {
+          this.submitSuccess();
+        } else {
+          alert('Something wrong. Try again.')
+        }
       })
       .catch(() => {
         alert('Something wrong. Try again.')
@@ -81,7 +82,7 @@ class ProposalModal extends PureComponent {
       title: this.state.title,
       description: this.state.description,
       alias: this.state.alias,
-      ver_string: this.props.verificationCode,
+      ver_string: this.state.verificationCode,
       signature: this.state.signature
     };
 
@@ -92,9 +93,31 @@ class ProposalModal extends PureComponent {
       .catch((error) => console.error(error))
   };
 
+
+  getVerificationCode = () => {
+    if (Session.has('verCode')) {
+      const code = Session.get('verCode');
+
+      this.setState(() => ({
+        verificationCode: code
+      }));
+    } else {
+      axios.get('https://boolberry.com/API/gen_string.php')
+        .then((response) => {
+          const code = response.data.result;
+          Session.set('verCode', code);
+
+          this.setState(() => ({
+            verificationCode: code
+          }));
+        })
+        .catch((error) => console.error(error));
+    }
+  };
+
   render() {
-    const { verificationCode } = this.props;
-    const { title, description, alias, signature } = this.state;
+    const { title, description, alias, signature, verificationCode } = this.state;
+
     return (
       <div className='modal-content proposal-modal'>
         <form onSubmit={this.handleSubmit}>

@@ -14,7 +14,7 @@ class ObjectUtils {
       }
 
       newMilestones.push({
-        status: milestone.status === 1 ? 'done' : 'progress',
+        status: milestone.status === '1' ? 'done' : 'progress',
         title: milestone.title,
         description: milestone.description
       })
