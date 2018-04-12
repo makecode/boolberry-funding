@@ -36,15 +36,17 @@ class ModalContainer extends Component {
   }
 
   getModal = (type, data) => {
+    const { onClose } = this.props;
+
     switch (type) {
       case PROGRESS_MODAL:
         return <ProgressModal {...data} />;
       case CONTRIBUTE_MODAL:
         return <ContributeModal {...data} />;
       case VOTE_MODAL:
-        return <VoteModal {...data} />;
+        return <VoteModal {...data} closeModal={onClose} />;
       case PROPOSAL_MODAL:
-        return <ProposalModal {...data} />;
+        return <ProposalModal {...data} closeModal={onClose} />;
       default:
         return;
     }

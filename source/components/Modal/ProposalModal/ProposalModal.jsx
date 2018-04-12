@@ -1,10 +1,19 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import Button from '../../Button/Button';
 import Session from '../../../framework/SessionStorage';
 
 class ProposalModal extends PureComponent {
+  static propTypes = {
+    closeModal: PropTypes.func
+  };
+
+  static defaultProps = {
+    closeModal: () => {}
+  };
+
   constructor(props) {
     super(props);
 
@@ -78,6 +87,8 @@ class ProposalModal extends PureComponent {
   };
 
   submitSuccess = () => {
+    const { closeModal } = this.props;
+
     const data = {
       title: this.state.title,
       description: this.state.description,
@@ -89,6 +100,7 @@ class ProposalModal extends PureComponent {
     axios.post('https://boolberry.com/API/create_proposal.php', data)
       .then(() => {
         alert('Success');
+        closeModal();
       })
       .catch((error) => console.error(error))
   };

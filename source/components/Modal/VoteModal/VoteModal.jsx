@@ -8,11 +8,13 @@ import axios from 'axios/index';
 
 class VoteModal extends PureComponent {
   static propTypes = {
-    data: PropTypes.object
+    data: PropTypes.object,
+    closeModal: PropTypes.func
   };
 
   static defaultProps = {
-    data: {}
+    data: {},
+    closeModal: () => {}
   };
 
   constructor(props) {
@@ -86,6 +88,7 @@ class VoteModal extends PureComponent {
     axios.post('https://boolberry.com/API/validate.php', data)
       .then((response) => {
         const status = response.data.result.status;
+
         if (status === 'OK') {
           this.submitSuccess();
         } else {
@@ -99,7 +102,7 @@ class VoteModal extends PureComponent {
 
 
   submitSuccess = () => {
-    const { data: dataRow } = this.props;
+    const { data: dataRow, closeModal } = this.props;
     const { id } = dataRow;
     const data = {
       id,
@@ -109,6 +112,7 @@ class VoteModal extends PureComponent {
     axios.post('https://boolberry.com/API/doAJAX.php', data)
       .then(() => {
         alert('Success');
+        closeModal();
       })
       .catch((error) => console.error(error))
   };
