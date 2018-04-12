@@ -55,8 +55,9 @@ class ObjectUtils {
 
   transformFundingTable = (rows) => rows.map((row) => {
     return {
+      id: row.id,
       title: row.title,
-      proposed: row.proposed,
+      proposed: row.alias,
       contributorsCounter: row.contributorsCounter,
       contributorsTitle: row.contributorsTitle,
       description: row.description,
@@ -72,6 +73,7 @@ class ObjectUtils {
   transformProposalsTable = (rows) => rows.map((row) => {
 
     return {
+      id: row.id,
       title: row.title,
       proposed: row.alias,
       description: row.description,

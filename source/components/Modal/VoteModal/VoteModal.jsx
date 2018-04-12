@@ -72,7 +72,6 @@ class VoteModal extends PureComponent {
     }
   };
 
-
   handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -85,12 +84,33 @@ class VoteModal extends PureComponent {
     };
 
     axios.post('https://boolberry.com/API/validate.php', data)
-      .then(() => {
-        this.submitSuccess();
+      .then((response) => {
+        const status = response.data.result.status;
+        if (status === 'OK') {
+          this.submitSuccess();
+        } else {
+          alert('Something wrong. Try again.')
+        }
       })
       .catch(() => {
         alert('Something wrong. Try again.')
       })
+  };
+
+
+  submitSuccess = () => {
+    const { data: dataRow } = this.props;
+    const { id } = dataRow;
+    const data = {
+      id,
+      type: 'vote'
+    };
+
+    axios.post('https://boolberry.com/API/doAJAX.php', data)
+      .then(() => {
+        alert('Success');
+      })
+      .catch((error) => console.error(error))
   };
 
   render() {

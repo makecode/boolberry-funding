@@ -82,7 +82,7 @@ class Funding extends Component {
   });
 
   getFundingRows = (rows) => rows.map((row, index) => {
-    const { title, propose, progressFunding } = row;
+    const { title, proposed, progressFunding } = row;
     const { description, progress } = progressFunding;
 
     return (
@@ -94,7 +94,7 @@ class Funding extends Component {
         </TableCol>
         <TableCol>
           <Icon ico='man' />
-          <span className='table__text'>Proposed by {propose}</span>
+          <span className='table__text'>Proposed by {proposed}</span>
         </TableCol>
         <TableCol>
           <Icon ico='stats' />
@@ -110,11 +110,11 @@ class Funding extends Component {
     );
   });
 
-  getProposalsRows = (rows) => rows.map((row, index) => {
-    const { title, proposed, description } = row;
+  getProposalsRows = (rows) => rows.map((row) => {
+    const { id, title, proposed, description } = row;
 
     return (
-      <TableRow key={index} onClick={() => this.onRowClick('Vote', VOTE_MODAL, row)}>
+      <TableRow key={id} onClick={() => this.onRowClick('Vote', VOTE_MODAL, row)}>
         <TableCol>
           <span className='table__text'>
             {title}

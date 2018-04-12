@@ -31,7 +31,7 @@ class ContributeModal extends PureComponent {
         <Progress className='blue' progress={progressFunding.progress} title={progressFunding.description} />
         <div className='modal-content__contributors'>
           <span className='modal-content__contributors-name'>Contributors: {contributorsTitle} </span>
-          <span className='modal-content__contributors-counter'>({contributorsCounter})</span>
+          <span className='modal-content__contributors-counter'>{contributorsCounter && (contributorsCounter)}</span>
         </div>
         <div className='modal-content__description'>{description}</div>
 
