@@ -67,6 +67,7 @@ class ModalContainer extends Component {
               <div className='modal__body'>
                 {this.getModal(typeModal, dataModal)}
               </div>
+              <span className='modal__shadow' />
             </div>
           </div>,
           this.modal

@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Button from '../../Button/Button';
 import Session from '../../../framework/SessionStorage';
+import { VERIFICATION_CODE_KEY } from '../../../framework/constants';
 
 class ProposalModal extends PureComponent {
   static propTypes = {
@@ -101,14 +102,15 @@ class ProposalModal extends PureComponent {
       .then(() => {
         alert('Success');
         closeModal();
+        Session.clear(VERIFICATION_CODE_KEY);
       })
       .catch((error) => console.error(error))
   };
 
 
   getVerificationCode = () => {
-    if (Session.has('verCode')) {
-      const code = Session.get('verCode');
+    if (Session.has(VERIFICATION_CODE_KEY)) {
+      const code = Session.get(VERIFICATION_CODE_KEY);
 
       this.setState(() => ({
         verificationCode: code
@@ -117,7 +119,7 @@ class ProposalModal extends PureComponent {
       axios.get('https://boolberry.com/API/gen_string.php')
         .then((response) => {
           const code = response.data.result;
-          Session.set('verCode', code);
+          Session.set(VERIFICATION_CODE_KEY, code);
 
           this.setState(() => ({
             verificationCode: code

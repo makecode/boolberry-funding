@@ -9,5 +9,9 @@ export default  {
 
   has(key) {
     return !!window.sessionStorage.getItem(`${key}`);
-  }
+  },
+
+  clear(key) {
+    window.sessionStorage.removeItem(`${key}`);
+  },
 }

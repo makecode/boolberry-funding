@@ -6,6 +6,8 @@ import Button from '../../Button/Button';
 import Session from '../../../framework/SessionStorage';
 import axios from 'axios/index';
 
+import { VERIFICATION_CODE_KEY } from '../../../framework/constants';
+
 class VoteModal extends PureComponent {
   static propTypes = {
     data: PropTypes.object,
@@ -31,12 +33,6 @@ class VoteModal extends PureComponent {
     this.getVerificationCode();
   }
 
-  renderUpvoted = (title, counter) => (
-    <div className='modal-content__upvoted'>
-      <span>Upvoted by: <Icon ico='man' /> {`${title} ${counter}`}</span>
-    </div>
-  );
-
   handleChangeAlias = (event) => {
     const value = event.target.value;
 
@@ -54,8 +50,8 @@ class VoteModal extends PureComponent {
   };
 
   getVerificationCode = () => {
-    if (Session.has('verCode')) {
-      const code = Session.get('verCode');
+    if (Session.has(VERIFICATION_CODE_KEY)) {
+      const code = Session.get(VERIFICATION_CODE_KEY);
 
       this.setState(() => ({
         verificationCode: code
@@ -64,7 +60,7 @@ class VoteModal extends PureComponent {
       axios.get('https://boolberry.com/API/gen_string.php')
         .then((response) => {
           const code = response.data.result;
-          Session.set('verCode', code);
+          Session.set(VERIFICATION_CODE_KEY, code);
 
           this.setState(() => ({
             verificationCode: code
@@ -106,21 +102,33 @@ class VoteModal extends PureComponent {
     const { id } = dataRow;
     const data = {
       id,
+      alias: this.state.alias,
       type: 'vote'
     };
-
+    debugger;
     axios.post('https://boolberry.com/API/doAJAX.php', data)
       .then(() => {
         alert('Success');
         closeModal();
+        Session.clear(VERIFICATION_CODE_KEY);
       })
       .catch((error) => console.error(error))
+  };
+
+  renderUpvotedBy = (items) => {
+    const string = items.map((el) => el.alias).join(', ');
+    debugger;
+    return (
+      <div>
+        <span>Upvoted by: <Icon ico='man' /> {string}</span>
+      </div>
+    )
   };
 
   render() {
     const { data } = this.props;
     const { alias, signature, verificationCode } = this.state;
-    const { proposed, title, description, votes, upvotedTitle, upvotedCounter } = data;
+    const { proposed, title, description, votes, upvotedBy } = data;
 
     return (
       <div className='modal-content vote-modal'>
@@ -132,7 +140,7 @@ class VoteModal extends PureComponent {
           {title}
           {votes && <span className='modal-content__votes'>{votes} Votes</span>}
         </div>
-        {(upvotedTitle && upvotedCounter) && this.renderUpvoted(upvotedTitle, upvotedCounter)}
+        {upvotedBy.length ? this.renderUpvotedBy(upvotedBy) : false}
         <div className='modal-content__description'>{description}</div>
         <form onSubmit={this.handleSubmit}>
           <dl className='modal-content__list-values'>

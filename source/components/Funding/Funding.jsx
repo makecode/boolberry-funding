@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import axios from 'axios';
 import ObjectUtils from '../../framework/ObjectUtils';
-import Session from '../../framework/SessionStorage';
 
 import Container from './../Container/Container';
 import Table from './../Table/Table';

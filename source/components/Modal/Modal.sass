@@ -17,6 +17,7 @@
     background-color: #fff
     color: #3a3a3a
     box-sizing: border-box
+    overflow: hidden
 
   &__header
     display: flex
@@ -29,9 +30,22 @@
     background-color: #eee
 
   &__body
+    position: relative
+    max-height: 600px
     padding: 20px 40px
     font-size: 13px
     font-weight: 400
+    overflow-y: scroll
+
+  &__shadow
+    display: block
+    position: absolute
+    left: 0
+    bottom: -1px
+    width: 100%
+    height: 1px
+    background-color: transparent
+    box-shadow: 0 13px 70px 40px rgba(255,255,255,1)
 
   &__title
     font-size: 22px

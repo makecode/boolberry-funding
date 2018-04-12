@@ -72,16 +72,15 @@ class ObjectUtils {
 
   transformProposalsTable = (rows) => rows.map((row) => {
 
+
     return {
       id: row.id,
       title: row.title,
       proposed: row.alias,
       description: row.description,
       verString: row.ver_string,
-
+      upvotedBy: row.upvoted,
       votes: row.votes,
-      upvotedTitle: row.upvotedTitle,
-      upvotedCounter: row.upvotedCounter
     }
   });
 

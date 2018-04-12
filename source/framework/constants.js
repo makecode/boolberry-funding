@@ -96,6 +96,8 @@ export const footerColumns = [
   }
 ];
 
+export const VERIFICATION_CODE_KEY = 'verCode';
+
 export const OBJECT_KEY_PROGRESS = 'progress';
 export const OBJECT_KEY_FUNDING = 'funding';
 export const OBJECT_KEY_PROPOSALS = 'proposals';
