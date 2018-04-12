@@ -9,7 +9,7 @@ class ObjectUtils {
     for (let i = 0; i < milestones.length; i += 1) {
       const milestone = milestones[i];
 
-      if (milestone.status === 1) {
+      if (milestone.status === '1') {
         doneCounter += 1;
       }
 
