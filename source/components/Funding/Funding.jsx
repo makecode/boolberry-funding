@@ -32,6 +32,10 @@ class Funding extends Component {
   }
 
   componentDidMount() {
+    this.updateTableData();
+  }
+
+  updateTableData = () => {
     axios.get('https://boolberry.com/API/get_proposal.php')
       .then((response) => {
         const data = ObjectUtils.transformTableData(response.data);
@@ -41,10 +45,16 @@ class Funding extends Component {
         }))
       })
       .catch((error) => console.error(error));
-  }
+  };
 
-  onRowClick = (title, type, data) => this.props.showModal(title, type, { data });
+  onRowClick = (title, type, data) => {
+    const modalData = {
+      ...data,
+      updateTable: this.updateTableData
+    };
 
+    this.props.showModal(title, type, { data: modalData });
+  };
   onProposalClick = () => {
     this.props.showModal('Create proposal', PROPOSAL_MODAL, {});
   };

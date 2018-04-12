@@ -11,12 +11,14 @@ import { VERIFICATION_CODE_KEY } from '../../../framework/constants';
 class VoteModal extends PureComponent {
   static propTypes = {
     data: PropTypes.object,
-    closeModal: PropTypes.func
+    closeModal: PropTypes.func,
+    updateTable: PropTypes.func
   };
 
   static defaultProps = {
     data: {},
-    closeModal: () => {}
+    closeModal: () => {},
+    updateTable: () => {}
   };
 
   constructor(props) {
@@ -98,7 +100,7 @@ class VoteModal extends PureComponent {
 
 
   submitSuccess = () => {
-    const { data: dataRow, closeModal } = this.props;
+    const { data: dataRow, closeModal, updateTable } = this.props;
     const { id } = dataRow;
     const data = {
       id,
@@ -110,6 +112,7 @@ class VoteModal extends PureComponent {
       .then(() => {
         alert('Success');
         closeModal();
+        updateTable();
         Session.clear(VERIFICATION_CODE_KEY);
       })
       .catch((error) => console.error(error))
@@ -117,9 +120,9 @@ class VoteModal extends PureComponent {
 
   renderUpvotedBy = (items) => {
     const string = items.map((el) => el.alias).join(', ');
-    debugger;
+
     return (
-      <div>
+      <div className='modal-content__upvoted-list'>
         <span>Upvoted by: <Icon ico='man' /> {string}</span>
       </div>
     )
