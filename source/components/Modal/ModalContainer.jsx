@@ -15,7 +15,8 @@ class ModalContainer extends Component {
     titleModal: PropTypes.string,
     typeModal: PropTypes.string,
     dataModal: PropTypes.object,
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    updateData: PropTypes.func
   };
 
   static defaultProps = {
@@ -23,7 +24,8 @@ class ModalContainer extends Component {
     titleModal: '',
     typeModal: '',
     dataModal: {},
-    onClose: () => {}
+    onClose: () => {},
+    updateData: () => {}
   };
 
   componentWillMount() {
@@ -36,7 +38,7 @@ class ModalContainer extends Component {
   }
 
   getModal = (type, data) => {
-    const { onClose } = this.props;
+    const { onClose, updateData } = this.props;
 
     switch (type) {
       case PROGRESS_MODAL:
@@ -44,7 +46,7 @@ class ModalContainer extends Component {
       case CONTRIBUTE_MODAL:
         return <ContributeModal {...data} />;
       case VOTE_MODAL:
-        return <VoteModal {...data} closeModal={onClose} />;
+        return <VoteModal {...data} closeModal={onClose} updateData={updateData} />;
       case PROPOSAL_MODAL:
         return <ProposalModal {...data} closeModal={onClose} />;
       default:

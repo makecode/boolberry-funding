@@ -12,13 +12,13 @@ class VoteModal extends PureComponent {
   static propTypes = {
     data: PropTypes.object,
     closeModal: PropTypes.func,
-    updateTable: PropTypes.func
+    updateData: PropTypes.func
   };
 
   static defaultProps = {
     data: {},
     closeModal: () => {},
-    updateTable: () => {}
+    updateData: () => {}
   };
 
   constructor(props) {
@@ -100,19 +100,18 @@ class VoteModal extends PureComponent {
 
 
   submitSuccess = () => {
-    const { data: dataRow, closeModal, updateTable } = this.props;
+    const { data: dataRow, closeModal, updateData } = this.props;
     const { id } = dataRow;
     const data = {
       id,
       alias: this.state.alias,
       type: 'vote'
     };
-    debugger;
+
     axios.post('https://boolberry.com/API/doAJAX.php', data)
       .then(() => {
-        alert('Success');
         closeModal();
-        updateTable();
+        updateData();
         Session.clear(VERIFICATION_CODE_KEY);
       })
       .catch((error) => console.error(error))

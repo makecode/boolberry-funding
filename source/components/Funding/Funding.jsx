@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-
-import axios from 'axios';
-import ObjectUtils from '../../framework/ObjectUtils';
 
 import Container from './../Container/Container';
 import Table from './../Table/Table';
@@ -13,48 +10,20 @@ import Icon from './../Icon/Icon';
 import Progress from './../Progress/Progress';
 
 import { PROGRESS_MODAL, CONTRIBUTE_MODAL, VOTE_MODAL, PROPOSAL_MODAL } from '../../framework/modals';
-// import { tableInProgress, tableFunding, tableProposals } from './../../framework/constants';
 
-class Funding extends Component {
+class Funding extends PureComponent {
   static propTypes = {
+    tableData: PropTypes.object,
     showModal: PropTypes.func
   };
 
   static defaultProps = {
+    tableData: {},
     showModal: () => {}
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      tableData: {}
-    };
-  }
+  onRowClick = (title, type, data) => this.props.showModal(title, type, { data });
 
-  componentDidMount() {
-    this.updateTableData();
-  }
-
-  updateTableData = () => {
-    axios.get('https://boolberry.com/API/get_proposal.php')
-      .then((response) => {
-        const data = ObjectUtils.transformTableData(response.data);
-
-        this.setState(() => ({
-          tableData: data
-        }))
-      })
-      .catch((error) => console.error(error));
-  };
-
-  onRowClick = (title, type, data) => {
-    const modalData = {
-      ...data,
-      updateTable: this.updateTableData
-    };
-
-    this.props.showModal(title, type, { data: modalData });
-  };
   onProposalClick = () => {
     this.props.showModal('Create proposal', PROPOSAL_MODAL, {});
   };
@@ -154,7 +123,7 @@ class Funding extends Component {
   };
 
   render() {
-    const { tableData } = this.state;
+    const { tableData } = this.props;
     const { progress = [], funding = [], proposals = [] } = tableData;
 
     return (

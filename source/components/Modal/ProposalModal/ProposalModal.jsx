@@ -100,7 +100,6 @@ class ProposalModal extends PureComponent {
 
     axios.post('https://boolberry.com/API/create_proposal.php', data)
       .then(() => {
-        alert('Success');
         closeModal();
         Session.clear(VERIFICATION_CODE_KEY);
       })

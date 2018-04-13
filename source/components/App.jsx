@@ -8,6 +8,8 @@ import ModalContainer from './Modal/ModalContainer';
 
 import { headerNavLinks, footerColumns } from '../framework/constants';
 import logo from './../media/logo.svg';
+import ObjectUtils from '../framework/ObjectUtils';
+import axios from 'axios/index';
 
 class App extends Component {
   constructor(props) {
@@ -17,9 +19,26 @@ class App extends Component {
       showModal: false,
       titleModal: '',
       typeModal: '',
-      dataModal: {}
+      dataModal: {},
+      tableData: {}
     }
   }
+
+  componentDidMount() {
+    this.updateTableData();
+  }
+
+  updateTableData = () => {
+    axios.get('https://boolberry.com/API/get_proposal.php')
+      .then((response) => {
+        const data = ObjectUtils.transformTableData(response.data);
+
+        this.setState(() => ({
+          tableData: data
+        }))
+      })
+      .catch((error) => console.error(error));
+  };
 
   closeModal = () => {
     this.setState({
@@ -40,20 +59,26 @@ class App extends Component {
   };
 
   render() {
-    const { showModal, titleModal, typeModal, dataModal } = this.state;
+    const { showModal, titleModal, typeModal, dataModal, tableData } = this.state;
     const modalProps = {
       titleModal,
       typeModal,
       dataModal,
       title: 'Modal',
-      onClose: this.closeModal
+      onClose: this.closeModal,
+      updateData: this.updateTableData
+    };
+
+    const fundingProps = {
+      tableData,
+      showModal: this.showModal
     };
 
     return (
       <div className='app'>
         <Header logo={logo} nav={headerNavLinks} />
         {/*<Hero />*/}
-        <Funding showModal={this.showModal} />
+        <Funding {...fundingProps} />
         <Footer columns={footerColumns} />
         {showModal && <ModalContainer {...modalProps} />}
       </div>
