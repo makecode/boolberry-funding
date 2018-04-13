@@ -8,11 +8,13 @@ import { VERIFICATION_CODE_KEY } from '../../../framework/constants';
 
 class ProposalModal extends PureComponent {
   static propTypes = {
-    closeModal: PropTypes.func
+    closeModal: PropTypes.func,
+    updateData: PropTypes.func
   };
 
   static defaultProps = {
-    closeModal: () => {}
+    closeModal: () => {},
+    updateData: () => {}
   };
 
   constructor(props) {
@@ -88,7 +90,7 @@ class ProposalModal extends PureComponent {
   };
 
   submitSuccess = () => {
-    const { closeModal } = this.props;
+    const { closeModal, updateData } = this.props;
 
     const data = {
       title: this.state.title,
@@ -102,6 +104,7 @@ class ProposalModal extends PureComponent {
       .then(() => {
         closeModal();
         Session.clear(VERIFICATION_CODE_KEY);
+        updateData();
       })
       .catch((error) => console.error(error))
   };

@@ -48,7 +48,7 @@ class ModalContainer extends Component {
       case VOTE_MODAL:
         return <VoteModal {...data} closeModal={onClose} updateData={updateData} />;
       case PROPOSAL_MODAL:
-        return <ProposalModal {...data} closeModal={onClose} />;
+        return <ProposalModal {...data} closeModal={onClose} updateData={updateData} />;
       default:
         return;
     }

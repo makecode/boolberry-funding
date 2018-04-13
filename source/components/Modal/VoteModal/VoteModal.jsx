@@ -99,7 +99,7 @@ class VoteModal extends PureComponent {
   };
 
   submitSuccess = () => {
-    const { data: dataRow, closeModal/*, updateData*/ } = this.props;
+    const { data: dataRow, closeModal, updateData } = this.props;
     const { id } = dataRow;
     const data = {
       id,
@@ -109,9 +109,10 @@ class VoteModal extends PureComponent {
 
     axios.post('https://boolberry.com/API/doAJAX.php', data)
       .then(() => {
-        debugger;
-        closeModal() && Session.clear(VERIFICATION_CODE_KEY) && window.location.reload();
-        // setTimeout(updateData, 1000);
+        closeModal();
+        Session.clear(VERIFICATION_CODE_KEY);
+        // window.location.reload()
+        setTimeout(updateData, 1000);
       })
       .catch((error) => console.error(error))
   };
