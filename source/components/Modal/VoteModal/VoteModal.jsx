@@ -100,7 +100,7 @@ class VoteModal extends PureComponent {
 
 
   submitSuccess = () => {
-    const { data: dataRow, closeModal, updateData } = this.props;
+    const { data: dataRow, closeModal/*, updateData*/ } = this.props;
     const { id } = dataRow;
     const data = {
       id,
@@ -113,7 +113,8 @@ class VoteModal extends PureComponent {
         closeModal();
         Session.clear(VERIFICATION_CODE_KEY);
 
-        setTimeout(updateData, 1000);
+        window.location.reload();
+        // setTimeout(updateData, 1000);
       })
       .catch((error) => console.error(error))
   };
