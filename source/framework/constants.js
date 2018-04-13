@@ -20,14 +20,56 @@ export const headerNavLinks = [
 
 export const footerColumns = [
   {
-    title: 'Boolberry',
+    title: 'Main',
+    items: [
+      {
+        name: 'What is Boolberry',
+        href: '#',
+      },
+      {
+        name: 'Papers',
+        href: '#',
+      },
+      {
+        name: 'Markets',
+        href: '#',
+      },
+      {
+        name: 'Roadmap',
+        href: '#',
+        blank: true
+      },
+      {
+        name: 'Join Us',
+        href: '#',
+        blank: true
+      },
+      {
+        name: 'Contributors',
+        href: '#',
+        blank: true
+      },
+      {
+        name: 'Downloads',
+        href: '#',
+        blank: true
+      },
+      {
+        name: 'Specs',
+        href: '#',
+        blank: true
+      }
+    ]
+  },
+  {
+    title: 'Funding',
     items: [
       {
         name: 'In Progress',
         href: '#what-is',
       },
       {
-        name: 'In Funding',
+        name: 'Funding',
         href: '#papers',
       },
       {
@@ -35,8 +77,52 @@ export const footerColumns = [
         href: '#markets',
       },
       {
-        name: 'Main Website',
-        href: 'http://boolberry.com/',
+        name: 'Archive',
+        href: '#',
+        blank: true
+      }
+    ]
+  },
+  {
+    title: 'Resources',
+    items: [
+      {
+        name: 'Network',
+        href: '/state.html'
+      },
+      {
+        name: 'Block explorer',
+        href: 'https://explorer.mining.blue/en/'
+      },
+
+      {
+        name: 'Github',
+        href: 'https://github.com/cryptozoidberg/boolberry'
+      },
+      {
+        name: 'Github/Releases',
+        href: 'https://github.com/cryptozoidberg/boolberry/releases/'
+      }
+    ]
+  },
+  {
+    title: 'Knowlege base',
+    items: [
+      {
+        name: 'Get started',
+        href: '#',
+      },
+      {
+        name: 'User guide',
+        href: '#',
+      },
+      {
+        name: 'Mining guide',
+        href: '#',
+      },
+      {
+        name: 'Dev guide/Api guide',
+        href: '#',
         blank: true
       }
     ]
@@ -72,28 +158,6 @@ export const footerColumns = [
       }
     ]
   },
-  {
-    title: 'Resources',
-    items: [
-      {
-        name: 'Network',
-        href: '/state.html'
-      },
-      {
-        name: 'Block explorer',
-        href: 'https://explorer.mining.blue/en/'
-      },
-
-      {
-        name: 'Github',
-        href: 'https://github.com/cryptozoidberg/boolberry'
-      },
-      {
-        name: 'Github/Releases',
-        href: 'https://github.com/cryptozoidberg/boolberry/releases/'
-      }
-    ]
-  }
 ];
 
 export const VERIFICATION_CODE_KEY = 'verCode';
