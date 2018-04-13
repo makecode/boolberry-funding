@@ -111,8 +111,9 @@ class VoteModal extends PureComponent {
     axios.post('https://boolberry.com/API/doAJAX.php', data)
       .then(() => {
         closeModal();
-        updateData();
         Session.clear(VERIFICATION_CODE_KEY);
+
+        setTimeout(updateData, 1000);
       })
       .catch((error) => console.error(error))
   };
