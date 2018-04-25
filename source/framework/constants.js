@@ -24,41 +24,41 @@ export const footerColumns = [
     items: [
       {
         name: 'What is Boolberry',
-        href: '#',
+        href: 'https://boolberry.com/#what-is',
       },
       {
         name: 'Papers',
-        href: '#',
+        href: 'https://boolberry.com/#papers',
       },
       {
         name: 'Markets',
-        href: '#',
+        href: 'https://boolberry.com/#markets',
       },
       {
         name: 'Roadmap',
-        href: '#',
+        href: 'https://boolberry.com/#roadmap',
         blank: true
       },
       {
         name: 'Join Us',
-        href: '#',
+        href: 'https://boolberry.com/#join-us',
         blank: true
       },
       {
         name: 'Contributors',
-        href: '#',
+        href: 'https://boolberry.com/#contributors',
         blank: true
       },
-      {
-        name: 'Downloads',
-        href: '#',
-        blank: true
-      },
-      {
-        name: 'Specs',
-        href: '#',
-        blank: true
-      }
+      // {
+      //   name: 'Downloads',
+      //   href: '#',
+      //   blank: true
+      // },
+      // {
+      //   name: 'Specs',
+      //   href: '#',
+      //   blank: true
+      // }
     ]
   },
   {
@@ -76,11 +76,11 @@ export const footerColumns = [
         name: 'Proposals',
         href: '#markets',
       },
-      {
-        name: 'Archive',
-        href: '#',
-        blank: true
-      }
+      // {
+      //   name: 'Archive',
+      //   href: '#',
+      //   blank: true
+      // }
     ]
   },
   {
@@ -105,28 +105,28 @@ export const footerColumns = [
       }
     ]
   },
-  {
-    title: 'Knowlege base',
-    items: [
-      {
-        name: 'Get started',
-        href: '#',
-      },
-      {
-        name: 'User guide',
-        href: '#',
-      },
-      {
-        name: 'Mining guide',
-        href: '#',
-      },
-      {
-        name: 'Dev guide/Api guide',
-        href: '#',
-        blank: true
-      }
-    ]
-  },
+  // {
+  //   title: 'Knowlege base',
+  //   items: [
+  //     {
+  //       name: 'Get started',
+  //       href: '#',
+  //     },
+  //     {
+  //       name: 'User guide',
+  //       href: '#',
+  //     },
+  //     {
+  //       name: 'Mining guide',
+  //       href: '#',
+  //     },
+  //     {
+  //       name: 'Dev guide/Api guide',
+  //       href: '#',
+  //       blank: true
+  //     }
+  //   ]
+  // },
   {
     title: 'Contacts',
     items: [

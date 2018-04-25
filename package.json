@@ -47,7 +47,7 @@
   ],
   "scripts": {
     "start": "webpack-dev-server --env development",
-    "build": "yarn run clear && webpack --env production",
+    "build": "webpack --env production",
     "serv": "static build",
     "clear": "rm -rf build"
   },
