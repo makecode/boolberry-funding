@@ -25,14 +25,17 @@ export const footerColumns = [
       {
         name: 'What is Boolberry',
         href: 'https://boolberry.com/#what-is',
+        blank: true
       },
       {
         name: 'Papers',
         href: 'https://boolberry.com/#papers',
+        blank: true
       },
       {
         name: 'Markets',
         href: 'https://boolberry.com/#markets',
+        blank: true
       },
       {
         name: 'Roadmap',
@@ -66,15 +69,15 @@ export const footerColumns = [
     items: [
       {
         name: 'In Progress',
-        href: '#what-is',
+        href: '#progress',
       },
       {
         name: 'Funding',
-        href: '#papers',
+        href: '#funding',
       },
       {
         name: 'Proposals',
-        href: '#markets',
+        href: '#proposals',
       },
       // {
       //   name: 'Archive',
