@@ -91,20 +91,24 @@ export const footerColumns = [
     items: [
       {
         name: 'Network',
-        href: '/state.html'
+        href: 'https://boolberry.com/state.html',
+        blank: true
       },
       {
         name: 'Block explorer',
-        href: 'https://explorer.mining.blue/en/'
+        href: 'https://explorer.mining.blue/en/',
+        blank: true
       },
 
       {
         name: 'Github',
-        href: 'https://github.com/cryptozoidberg/boolberry'
+        href: 'https://github.com/cryptozoidberg/boolberry',
+        blank: true
       },
       {
         name: 'Github/Releases',
-        href: 'https://github.com/cryptozoidberg/boolberry/releases/'
+        href: 'https://github.com/cryptozoidberg/boolberry/releases/',
+        blank: true
       }
     ]
   },
@@ -136,28 +140,33 @@ export const footerColumns = [
       {
         name: 'Bitcointalk',
         href: 'https://bitcointalk.org/index.php?topic=577267',
-        icon: 'icon-bitcointalk'
+        icon: 'icon-bitcointalk',
+        blank: true
       },
       {
         name: 'Slack',
         href: 'https://boolberry.slack.com/',
-        icon: 'icon-slack'
+        icon: 'icon-slack',
+        blank: true
       },
 
       {
         name: 'Telegram',
         href: 'https://t.me/boolberry',
-        icon: 'icon-telegram'
+        icon: 'icon-telegram',
+        blank: true
       },
       {
         name: 'Twitter',
         href: 'https://twitter.com/BoolberryBBR',
-        icon: 'icon-twitter'
+        icon: 'icon-twitter',
+        blank: true
       },
       {
         name: 'Reddit',
         href: 'https://www.reddit.com/r/boolberry/',
-        icon: 'icon-reddit'
+        icon: 'icon-reddit',
+        blank: true
       }
     ]
   },
