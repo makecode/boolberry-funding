@@ -47,11 +47,11 @@ export const footerColumns = [
         href: 'https://boolberry.com/#join-us',
         blank: true
       },
-      {
-        name: 'Contributors',
-        href: 'https://boolberry.com/#contributors',
-        blank: true
-      },
+      // {
+      //   name: 'Contributors',
+      //   href: 'https://boolberry.com/#contributors',
+      //   blank: true
+      // },
       // {
       //   name: 'Downloads',
       //   href: '#',
