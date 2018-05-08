@@ -112,28 +112,36 @@ export const footerColumns = [
       }
     ]
   },
-  // {
-  //   title: 'Knowlege base',
-  //   items: [
+  {
+    title: 'Knowlege base',
+    items: [
+      {
+        name: 'How to',
+        href: 'https://boolberry.com/howto.html',
+        blank: true
+      },
   //     {
   //       name: 'Get started',
   //       href: '#',
+  //       blank: true
   //     },
   //     {
   //       name: 'User guide',
   //       href: '#',
+  //       blank: true
   //     },
   //     {
   //       name: 'Mining guide',
   //       href: '#',
+  //       blank: true
   //     },
   //     {
   //       name: 'Dev guide/Api guide',
   //       href: '#',
   //       blank: true
   //     }
-  //   ]
-  // },
+    ]
+  },
   {
     title: 'Contacts',
     items: [
@@ -145,7 +153,7 @@ export const footerColumns = [
       },
       {
         name: 'Slack',
-        href: 'https://boolberry.slack.com/',
+        href: 'https://join.slack.com/t/boolberry/shared_invite/enQtMzQ3OTQ3MzgzNjcxLTBlYmRlMmRlMmNkNzk1NDk4NGMxMThhYmZkM2FlODQ0ZDBhM2FkYjIzZjJlNzA2MWMxOTZmZDA0NGZlNzg5YzY',
         icon: 'icon-slack',
         blank: true
       },
