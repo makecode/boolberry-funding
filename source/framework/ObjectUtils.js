@@ -31,7 +31,7 @@ class ObjectUtils {
 
   transformProgressTable = (rows) => rows.map((row) => {
     const milestones = row.milestones.length ? this.transformMilestones(row.milestones) : [];
-
+    // debugger;
     return {
       milestones: milestones.milestones,
       title: row.title,
@@ -48,7 +48,7 @@ class ObjectUtils {
         description: `${milestones.done} of ${milestones.all} milestones`,
         progress: milestones.progress
       },
-      date: 'Roadmap / June 2018',
+      date: row.roadmap_date,
       slackUrl: row.slackUrl
     }
   });

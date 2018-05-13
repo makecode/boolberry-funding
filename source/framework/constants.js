@@ -1,22 +1,16 @@
-export const headerNavLinks = [
-  {
-    title: 'In Progress',
-    href: '#progress'
+export const LANG_KEY = 'i18nextLng';
+
+export const languages = {
+  en: {
+    activeText: 'Eng',
+    menuText: 'English'
   },
-  {
-    title: 'In Funding',
-    href: '#funding'
-  },
-  {
-    title: 'Proposals',
-    href: '#proposals'
-  },
-  {
-    title: 'Main Website',
-    href: 'http://boolberry.com/',
-    blank: true
+  zh: {
+    activeText: '中文 (中国)',
+    menuText: '中文 (中国)'
   }
-];
+};
+
 
 export const footerColumns = [
   {

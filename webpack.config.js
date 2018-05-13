@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const merge = require('webpack-merge');
 const devserver = require('./webpack/devserver');
 const jsx = require('./webpack/jsx');
@@ -36,7 +37,11 @@ const common = merge([
 			new HtmlWebpackPlugin({
 				filename: 'index.html',
 				template: 'app.html'
-			})
+			}),
+			new CopyWebpackPlugin([{
+				from: './locales/**/*',
+				to: ''
+			}])
   	]
 	},
 	jsx(),

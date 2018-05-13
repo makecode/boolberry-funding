@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 
 import Container from './../Container/Container';
 import Table from './../Table/Table';
@@ -11,6 +12,7 @@ import Progress from './../Progress/Progress';
 
 import { PROGRESS_MODAL, CONTRIBUTE_MODAL, VOTE_MODAL, PROPOSAL_MODAL } from '../../framework/modals';
 
+@translate(['common'], {wait: true})
 class Funding extends PureComponent {
   static propTypes = {
     tableData: PropTypes.object,
@@ -123,7 +125,7 @@ class Funding extends PureComponent {
   };
 
   render() {
-    const { tableData } = this.props;
+    const { tableData, t } = this.props;
     const { progress = [], funding = [], proposals = [] } = tableData;
 
     return (
@@ -131,7 +133,7 @@ class Funding extends PureComponent {
         <Container>
           <div className='funding__el' id='progress'>
             <h3 className="funding__title">
-              <span className="funding__title-text">In progress/Scheduled</span>
+              <span className="funding__title-text">{t('sections.inProgress.title')}</span>
             </h3>
 
             {progress.length ? (
