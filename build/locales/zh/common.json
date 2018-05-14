@@ -1,0 +1,80 @@
+{
+  "nav": ["прогресс", "ыыы", "предложения", "главный сайт"],
+  "sections": {
+    "inProgress": {
+      "title": "Прогресс"
+    },
+    "funding": {
+        "title": "Фандинг",
+      "progress": "Фандинг в процессе",
+      "buttons": {
+        "contribute": "Контрибьют"
+      }
+    },
+    "proposals": {
+      "title": "Пропоузалз",
+      "buttons": {
+        "add": "Новое предложение",
+        "vote": "Голосовать"
+      }
+    }
+  },
+  "modal": {
+    "titles": {
+      "progress": "В прогрессе",
+      "contribute": "Контрибьют",
+      "vote": "Голосовать",
+      "createProposal": "Создать предложение"
+    },
+    "title": "Название",
+    "address": "Адресс",
+    "payment": "Пэймент ОйДи",
+    "upvoted": "Авотед бай",
+    "contributors": "Контрибьюторы",
+    "validation": "Алиас валидации",
+    "alias": "Алиас",
+    "verification": "Строка проверки",
+    "signature": "Подпись",
+    "channel": "Канал шлаки",
+    "description": "Описание",
+    "votes": "Голосов",
+    "modalDescription": "*Бла бла бла бла бла",
+    "buttons": {
+      "submit": "Подтвердить"
+    }
+  },
+  "progress": {
+    "miles": "майлстоуны",
+    "outOf" : "аут оф"
+  },
+  "common": {
+    "proposed": "Пропоузед бай",
+    "funded": "Фандед бай"
+  },
+  "footer": [
+    {
+      "title": "Main",
+      "items": [
+        "Boolberry是什么", "文件", "市场", "路线图", "加入我们", "投资者"
+      ]
+    },
+    {
+      "title": "Funding",
+      "items": [
+        "In progress", "Funding", "Proposal"
+      ]
+    },
+    {
+      "title": "资源",
+      "items": [
+        "网络", "区块资源管理器", "Github", "Github/发布文件"
+      ]
+    },
+    {
+      "title": "资源",
+      "items": [
+        "Bitcointalk", "Slack", "Telegram", "Twitter", "Reddit"
+      ]
+    }
+  ]
+}

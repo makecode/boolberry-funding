@@ -1,0 +1,80 @@
+{
+  "nav": ["In Progress", "In Funding", "Proposals", "Main Website"],
+  "sections": {
+    "inProgress": {
+      "title": "In progress/Scheduled"
+    },
+    "funding": {
+      "title": "Funding",
+      "progress": "Funding in progress",
+      "buttons": {
+        "contribute": "Contribute"
+      }
+    },
+    "proposals": {
+      "title": "Proposals",
+      "buttons": {
+        "add": "Submit proposals",
+        "vote": "Vote"
+      }
+    }
+  },
+  "modal": {
+    "titles": {
+      "progress": "In Progress",
+      "contribute": "Contribute",
+      "vote": "Vote",
+      "createProposal": "Create proposal"
+    },
+    "title": "Title",
+    "address": "Address",
+    "payment": "Payment ID",
+    "upvoted": "Upvoted by",
+    "contributors": "Contributors",
+    "validation": "Alias Validation",
+    "alias": "Alias",
+    "verification": "Ver string",
+    "signature": "Signature",
+    "channel": "Task channel",
+    "description": "Description",
+    "votes": "Votes",
+    "modalDescription": "*Your contribution should be visible within 5 minutes, please contact the team if it’s not",
+    "buttons": {
+      "submit": "Submit"
+    }
+  },
+  "progress": {
+    "miles": "milestones",
+    "outOf" : "out of"
+  },
+  "common": {
+    "proposed": "Proposed by",
+    "funded": "Funded by"
+  },
+  "footer": [
+    {
+      "title": "Main",
+      "items": [
+        "What is Boolberry", "Papers", "Markets", "Roadmap", "Join Us", "Contributors"
+      ]
+    },
+    {
+      "title": "Funding",
+      "items": [
+        "In progress", "Funding", "Proposal"
+      ]
+    },
+    {
+      "title": "Resources",
+      "items": [
+        "Network", "Block explorer", "Github", "Github/Releases"
+      ]
+    },
+    {
+      "title": "Contacts",
+      "items": [
+        "Bitcointalk", "Slack", "Telegram", "Twitter", "Reddit"
+      ]
+    }
+  ]
+}
