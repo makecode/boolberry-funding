@@ -159,7 +159,7 @@ class ProposalModal extends PureComponent {
           <dl className='modal-content__list-values'>
             <dt>{t('modal.validation')}</dt>
             <dd>
-              <a className='modal-content__link' href='#'>What is it?</a>
+              <a className='modal-content__link' href='https://medium.com/@BoolberryBBR/participating-in-bbip-2827375fa7ee' target='_blank'>What is it?</a>
             </dd>
           </dl>
 
