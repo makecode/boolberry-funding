@@ -65,7 +65,8 @@ class ObjectUtils {
         progress: 100 / row.bbr * row.bbr
       },
       address: row.address,
-      paymentId: row.paymentId
+      paymentId: row.paymentId,
+      slackUrl: row.slackUrl
     };
   });
 
