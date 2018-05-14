@@ -20,6 +20,13 @@
     }
   },
   "modal": {
+    "titles": {
+      "progress": "In Progress",
+      "contribute": "Contribute",
+      "vote": "Vote",
+      "createProposal": "Create proposal"
+    },
+    "title": "Title",
     "address": "Address",
     "payment": "Payment ID",
     "upvoted": "Upvoted by",
@@ -29,7 +36,9 @@
     "verification": "Ver string",
     "signature": "Signature",
     "channel": "Task channel",
-    "description": "*Your contribution should be visible within 5 minutes, please contact the team if it’s not",
+    "description": "Description",
+    "votes": "Votes",
+    "modalDescription": "*Your contribution should be visible within 5 minutes, please contact the team if it’s not",
     "buttons": {
       "submit": "Submit"
     }
@@ -41,5 +50,31 @@
   "common": {
     "proposed": "Proposed by",
     "funded": "Funded by"
-  }
+  },
+  "footer": [
+    {
+      "title": "Main",
+      "items": [
+        "What is Boolberry", "Papers", "Markets", "Roadmap", "Join Us", "Contributors"
+      ]
+    },
+    {
+      "title": "Funding",
+      "items": [
+        "In progress", "Funding", "Proposal"
+      ]
+    },
+    {
+      "title": "Resources",
+      "items": [
+        "Network", "Block explorer", "Github", "Github/Releases"
+      ]
+    },
+    {
+      "title": "Contacts",
+      "items": [
+        "Bitcointalk", "Slack", "Telegram", "Twitter", "Reddit"
+      ]
+    }
+  ]
 }

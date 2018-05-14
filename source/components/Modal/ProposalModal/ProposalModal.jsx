@@ -1,20 +1,24 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { translate } from 'react-i18next';
 
 import Button from '../../Button/Button';
 import Session from '../../../framework/SessionStorage';
 import { VERIFICATION_CODE_KEY } from '../../../framework/constants';
 
+@translate(['common'], {wait: true})
 class ProposalModal extends PureComponent {
   static propTypes = {
     closeModal: PropTypes.func,
-    updateData: PropTypes.func
+    updateData: PropTypes.func,
+    t: PropTypes.func
   };
 
   static defaultProps = {
     closeModal: () => {},
-    updateData: () => {}
+    updateData: () => {},
+    t: () => {}
   };
 
   constructor(props) {
@@ -132,52 +136,53 @@ class ProposalModal extends PureComponent {
   };
 
   render() {
+    const { t } = this.props;
     const { title, description, alias, signature, verificationCode } = this.state;
 
     return (
       <div className='modal-content proposal-modal'>
         <form onSubmit={this.handleSubmit}>
           <dl className='modal-content__list-values column'>
-            <dt>Title</dt>
+            <dt>{t('modal.title')}</dt>
             <dd>
               <input type='text' value={title} onChange={this.handleChangeTitle} className='modal-content__input'/>
             </dd>
           </dl>
 
           <dl className='modal-content__list-values column'>
-            <dt>Description</dt>
+            <dt>{t('modal.description')}</dt>
             <dd>
               <textarea rows='4' value={description} onChange={this.handleChangeDescription} className='modal-content__text-area'/>
             </dd>
           </dl>
 
           <dl className='modal-content__list-values'>
-            <dt>Alias Validation</dt>
+            <dt>{t('modal.validation')}</dt>
             <dd>
               <a className='modal-content__link' href='#'>What is it?</a>
             </dd>
           </dl>
 
           <dl className='modal-content__list-values'>
-            <dt>Alias</dt>
+            <dt>{t('modal.alias')}</dt>
             <dd>
               <input value={alias} onChange={this.handleChangeAlias} className='modal-content__input-small' type='text'/>
             </dd>
           </dl>
 
           <dl className='modal-content__list-values'>
-            <dt>Ver string</dt>
+            <dt>{t('modal.verification')}</dt>
             <dd>{verificationCode}</dd>
           </dl>
 
           <dl className='modal-content__list-values'>
-            <dt>Signature</dt>
+            <dt>{t('modal.signature')}</dt>
             <dd>
               <input value={signature} onChange={this.handleChangeSignature} className='modal-content__input-small' type='text'/>
             </dd>
           </dl>
 
-          <Button className='modal-content__submit'>Submit</Button>
+          <Button className='modal-content__submit'>{t('modal.buttons.submit')}</Button>
         </form>
       </div>
     )

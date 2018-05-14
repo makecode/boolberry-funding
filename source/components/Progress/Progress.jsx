@@ -15,7 +15,8 @@ const Progress = (props) => {
 Progress.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
-  progress: PropTypes.number
+  progress: PropTypes.number,
+  t: PropTypes.func
 };
 
 Progress.defaultProps = {

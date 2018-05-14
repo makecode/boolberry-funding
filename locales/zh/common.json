@@ -5,41 +5,76 @@
       "title": "Прогресс"
     },
     "funding": {
-      "title": "Funding",
-      "progress": "Funding in progress",
+        "title": "Фандинг",
+      "progress": "Фандинг в процессе",
       "buttons": {
-        "contribute": "Contribute"
+        "contribute": "Контрибьют"
       }
     },
     "proposals": {
-      "title": "Proposals",
+      "title": "Пропоузалз",
       "buttons": {
-        "add": "Submit proposals",
-        "vote": "Vote"
+        "add": "Новое предложение",
+        "vote": "Голосовать"
       }
     }
   },
   "modal": {
-    "address": "Address",
-    "payment": "Payment ID",
-    "upvoted": "Upvoted by",
-    "contributors": "Contributors",
-    "validation": "Alias Validation",
-    "alias": "Alias",
-    "verification": "Ver string",
-    "signature": "Signature",
-    "channel": "Task channel",
-    "description": "*Your contribution should be visible within 5 minutes, please contact the team if it’s not",
+    "titles": {
+      "progress": "В прогрессе",
+      "contribute": "Контрибьют",
+      "vote": "Голосовать",
+      "createProposal": "Создать предложение"
+    },
+    "title": "Название",
+    "address": "Адресс",
+    "payment": "Пэймент ОйДи",
+    "upvoted": "Авотед бай",
+    "contributors": "Контрибьюторы",
+    "validation": "Алиас валидации",
+    "alias": "Алиас",
+    "verification": "Строка проверки",
+    "signature": "Подпись",
+    "channel": "Канал шлаки",
+    "description": "Описание",
+    "votes": "Голосов",
+    "modalDescription": "*Бла бла бла бла бла",
     "buttons": {
-      "submit": "Submit"
+      "submit": "Подтвердить"
     }
   },
   "progress": {
-    "miles": "milestones",
-    "outOf" : "out of"
+    "miles": "майлстоуны",
+    "outOf" : "аут оф"
   },
   "common": {
-    "proposed": "Proposed by",
-    "funded": "Funded by"
-  }
+    "proposed": "Пропоузед бай",
+    "funded": "Фандед бай"
+  },
+  "footer": [
+    {
+      "title": "Main",
+      "items": [
+        "Boolberry是什么", "文件", "市场", "路线图", "加入我们", "投资者"
+      ]
+    },
+    {
+      "title": "Funding",
+      "items": [
+        "In progress", "Funding", "Proposal"
+      ]
+    },
+    {
+      "title": "资源",
+      "items": [
+        "网络", "区块资源管理器", "Github", "Github/发布文件"
+      ]
+    },
+    {
+      "title": "资源",
+      "items": [
+        "Bitcointalk", "Slack", "Telegram", "Twitter", "Reddit"
+      ]
+    }
+  ]
 }

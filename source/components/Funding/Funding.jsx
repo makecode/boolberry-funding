@@ -27,15 +27,17 @@ class Funding extends PureComponent {
   onRowClick = (title, type, data) => this.props.showModal(title, type, { data });
 
   onProposalClick = () => {
-    this.props.showModal('Create proposal', PROPOSAL_MODAL, {});
+    const { t } = this.props;
+    this.props.showModal(t('modal.titles.createProposal'), PROPOSAL_MODAL, {});
   };
 
   getProgressRows = (rows) => rows.map((row, index) => {
+    const { t } = this.props;
     const { title, proposed, funded, progressDevelopment, date } = row;
     const { description, progress } = progressDevelopment;
 
     return (
-      <TableRow key={index} onClick={() => this.onRowClick('In Progress', PROGRESS_MODAL, row)}>
+      <TableRow key={index} onClick={() => this.onRowClick(t('modal.titles.progress'), PROGRESS_MODAL, row)}>
         <TableCol>
           <span className='table__text'>
             {title}
@@ -43,11 +45,11 @@ class Funding extends PureComponent {
         </TableCol>
         <TableCol>
           <Icon ico='man' />
-          <span className='table__text'>Proposed by {proposed}</span>
+          <span className='table__text'>{t('common.proposed')} {proposed}</span>
         </TableCol>
         <TableCol>
           <Icon ico='check' />
-          <span className='table__text'>Funded by {funded}</span>
+          <span className='table__text'>{t('common.funded')} {funded}</span>
         </TableCol>
         <TableCol>
           <Progress progress={progress} title={description} />
@@ -62,11 +64,12 @@ class Funding extends PureComponent {
   });
 
   getFundingRows = (rows) => rows.map((row, index) => {
+    const { t } = this.props;
     const { title, proposed, progressFunding } = row;
     const { description, progress } = progressFunding;
 
     return (
-      <TableRow key={index} onClick={() => this.onRowClick('Contribute', CONTRIBUTE_MODAL, row)}>
+      <TableRow key={index} onClick={() => this.onRowClick(t('modal.titles.contribute'), CONTRIBUTE_MODAL, row)}>
         <TableCol>
           <span className='table__text'>
             {title}
@@ -74,27 +77,28 @@ class Funding extends PureComponent {
         </TableCol>
         <TableCol>
           <Icon ico='man' />
-          <span className='table__text'>Proposed by {proposed}</span>
+          <span className='table__text'>{t('common.proposed')} {proposed}</span>
         </TableCol>
         <TableCol>
           <Icon ico='stats' />
-          <span className='table__text'>Funding in progress</span>
+          <span className='table__text'>{t('sections.funding.progress')}</span>
         </TableCol>
         <TableCol>
           <Progress className='blue' progress={progress} title={description} />
         </TableCol>
         <TableCol>
-          <Button onClick={() => this.onRowClick('Contribute', CONTRIBUTE_MODAL, row)}>Contribute</Button>
+          <Button onClick={() => this.onRowClick(t('modal.titles.contribute'), CONTRIBUTE_MODAL, row)}>{t('sections.funding.buttons.contribute')}</Button>
         </TableCol>
       </TableRow>
     );
   });
 
   getProposalsRows = (rows) => rows.map((row) => {
+    const { t } = this.props;
     const { id, title, proposed, description } = row;
 
     return (
-      <TableRow key={id} onClick={() => this.onRowClick('Vote', VOTE_MODAL, row)}>
+      <TableRow key={id} onClick={() => this.onRowClick(t('modal.titles.vote'), VOTE_MODAL, row)}>
         <TableCol>
           <span className='table__text'>
             {title}
@@ -102,7 +106,7 @@ class Funding extends PureComponent {
         </TableCol>
         <TableCol>
           <Icon ico='man' />
-          <span className='table__text'>Proposed by {proposed}</span>
+          <span className='table__text'>{t('common.proposed')} {proposed}</span>
         </TableCol>
         <TableCol>
           <span className='table__text'>
@@ -110,7 +114,7 @@ class Funding extends PureComponent {
           </span>
         </TableCol>
         <TableCol>
-          <Button className='btn-transparent' onClick={() => this.onRowClick('Vote', VOTE_MODAL, row)}>Vote</Button>
+          <Button className='btn-transparent' onClick={() => this.onRowClick(t('modal.titles.vote'), VOTE_MODAL, row)}>{t('sections.proposals.buttons.vote')}</Button>
         </TableCol>
       </TableRow>
     );
@@ -149,7 +153,7 @@ class Funding extends PureComponent {
 
           <div className='funding__el' id='funding'>
             <h3 className="funding__title">
-              <span className="funding__title-text">Funding</span>
+              <span className="funding__title-text">{t('sections.funding.title')}</span>
             </h3>
 
             {funding.length ? (
@@ -165,11 +169,11 @@ class Funding extends PureComponent {
 
           <div className='funding__el'>
             <h3 className="funding__title">
-              <span className="funding__title-text">Proposals</span>
+              <span className="funding__title-text">{t('sections.proposals.title')}</span>
               <Button
                 className="funding__title-btn btn btn-transparent btn-inline"
                 onClick={this.onProposalClick}>
-                + Submit proposals
+                + {t('sections.proposals.buttons.add')}
               </Button>
             </h3>
 

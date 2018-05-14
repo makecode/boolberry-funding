@@ -1,16 +1,20 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 
 import Icon from '../../Icon/Icon';
 import Progress from '../../Progress/Progress';
 
+@translate(['common'], {wait: true})
 class ProgressModal extends PureComponent {
   static propTypes = {
-    data: PropTypes.object
+    data: PropTypes.object,
+    t: PropTypes.func
   };
 
   static defaultProps = {
-    data: {}
+    data: {},
+    t: () => {}
   };
 
   getMilestones = (milestones) => milestones.map((milestone, index) => {
@@ -28,7 +32,7 @@ class ProgressModal extends PureComponent {
   });
 
   render() {
-    const { data } = this.props;
+    const { data, t } = this.props;
     const {
       title, proposed, contributorsTitle, contributorsCounter,
       description, progressFunding, progressDevelopment, milestones, slackUrl
@@ -38,12 +42,12 @@ class ProgressModal extends PureComponent {
       <div className='modal-content progress-modal'>
         <div className='modal-content__proposed'>
           <Icon ico='man' />
-          <span>Proposed by {proposed}</span>
+          <span>{t('common.proposed')} {proposed}</span>
         </div>
         <div className='modal-content__title'>{title}</div>
         <Progress className='blue' progress={progressFunding.progress} title={progressFunding.description} />
         <div className='modal-content__contributors'>
-          <span className='modal-content__contributors-name'>Contributors: {contributorsTitle} </span>
+          <span className='modal-content__contributors-name'>{t('modal.contributors')}: {contributorsTitle} </span>
           <span className='modal-content__contributors-counter'>{contributorsCounter && (contributorsCounter)}</span>
         </div>
         <div className='modal-content__description'>{description}</div>
@@ -53,7 +57,7 @@ class ProgressModal extends PureComponent {
         </div>
         <a className='modal-content__slack' href={slackUrl}>
           <Icon ico='slack' />
-          <span>Task channel</span>
+          <span>{t('modal.channel')}</span>
         </a>
       </div>
     )

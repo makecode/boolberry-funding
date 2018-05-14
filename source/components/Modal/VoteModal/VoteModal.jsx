@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 
 import Icon from '../../Icon/Icon';
 import Button from '../../Button/Button';
@@ -8,17 +9,20 @@ import axios from 'axios/index';
 
 import { VERIFICATION_CODE_KEY } from '../../../framework/constants';
 
+@translate(['common'], {wait: true})
 class VoteModal extends PureComponent {
   static propTypes = {
     data: PropTypes.object,
     closeModal: PropTypes.func,
-    updateData: PropTypes.func
+    updateData: PropTypes.func,
+    t: PropTypes.func
   };
 
   static defaultProps = {
     data: {},
     closeModal: () => {},
-    updateData: () => {}
+    updateData: () => {},
+    t: () => {}
   };
 
   constructor(props) {
@@ -128,7 +132,7 @@ class VoteModal extends PureComponent {
   };
 
   render() {
-    const { data } = this.props;
+    const { data, t } = this.props;
     const { alias, signature, verificationCode } = this.state;
     const { proposed, title, description, votes, upvotedBy } = data;
 
@@ -136,38 +140,38 @@ class VoteModal extends PureComponent {
       <div className='modal-content vote-modal'>
         <div className='modal-content__proposed'>
           <Icon ico='man' />
-          <span>Proposed by {proposed}</span>
+          <span>{t('common.proposed')} {proposed}</span>
         </div>
         <div className='modal-content__title'>
           {title}
-          {votes && <span className='modal-content__votes'>{votes} Votes</span>}
+          {votes && <span className='modal-content__votes'>{votes} {t('modal.votes')}</span>}
         </div>
         {upvotedBy.length ? this.renderUpvotedBy(upvotedBy) : false}
         <div className='modal-content__description'>{description}</div>
         <form onSubmit={this.handleSubmit}>
           <dl className='modal-content__list-values'>
-            <dt>Alias Validation:</dt>
+            <dt>{t('modal.validation')}:</dt>
             <dd>
               <a className='modal-content__link' href='#'>What is it?</a>
             </dd>
           </dl>
           <dl className='modal-content__list-values'>
-            <dt>Alias</dt>
+            <dt>{t('modal.alias')}</dt>
             <dd>
               <input value={alias} onChange={this.handleChangeAlias} className='modal-content__input-small' type='text'/>
             </dd>
           </dl>
           <dl className='modal-content__list-values'>
-            <dt>Ver string:</dt>
+            <dt>{t('modal.verification')}:</dt>
             <dd>{verificationCode}</dd>
           </dl>
           <dl className='modal-content__list-values'>
-            <dt>Signature</dt>
+            <dt>{t('modal.signature')}</dt>
             <dd>
               <input value={signature} onChange={this.handleChangeSignature} className='modal-content__input-small' type='text'/>
             </dd>
           </dl>
-          <Button className='modal-content__submit'>Submit</Button>
+          <Button className='modal-content__submit'>{t('modal.buttons.submit')}</Button>
         </form>
       </div>
     )

@@ -1,8 +1,8 @@
 import i18n from 'i18next';
 import XHR from 'i18next-xhr-backend';
 import Cache from 'i18next-localstorage-cache';
-import LocalStorage from 'source/framework/LocalStorage';
-import { LANG_KEY } from 'source/framework/constants';
+import LocalStorage from './source/framework/LocalStorage';
+import { LANG_KEY } from './source/framework/constants';
 // import LanguageDetector from 'i18next-browser-languagedetector';
 let initLanguage = LocalStorage.get(LANG_KEY);
 if (!initLanguage) {

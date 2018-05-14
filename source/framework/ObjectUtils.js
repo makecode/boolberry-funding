@@ -1,7 +1,6 @@
 import { OBJECT_KEY_PROGRESS, OBJECT_KEY_FUNDING, OBJECT_KEY_PROPOSALS } from '../framework/constants';
 
 class ObjectUtils {
-
   transformMilestones = (milestones) => {
     let doneCounter = 0;
     let newMilestones = [];
@@ -31,7 +30,7 @@ class ObjectUtils {
 
   transformProgressTable = (rows) => rows.map((row) => {
     const milestones = row.milestones.length ? this.transformMilestones(row.milestones) : [];
-    // debugger;
+
     return {
       milestones: milestones.milestones,
       title: row.title,
@@ -71,8 +70,6 @@ class ObjectUtils {
   });
 
   transformProposalsTable = (rows) => rows.map((row) => {
-
-
     return {
       id: row.id,
       title: row.title,
