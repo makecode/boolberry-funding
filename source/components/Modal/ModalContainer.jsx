@@ -16,7 +16,11 @@ class ModalContainer extends Component {
     typeModal: PropTypes.string,
     dataModal: PropTypes.object,
     onClose: PropTypes.func,
-    updateData: PropTypes.func
+    updateData: PropTypes.func,
+
+    //toastr
+    showSuccessToastr: PropTypes.func,
+    showErrorToastr: PropTypes.func
   };
 
   static defaultProps = {
@@ -38,7 +42,7 @@ class ModalContainer extends Component {
   }
 
   getModal = (type, data) => {
-    const { onClose, updateData } = this.props;
+    const { onClose, updateData, showSuccessToastr, showErrorToastr } = this.props;
 
     switch (type) {
       case PROGRESS_MODAL:
@@ -46,9 +50,9 @@ class ModalContainer extends Component {
       case CONTRIBUTE_MODAL:
         return <ContributeModal {...data} />;
       case VOTE_MODAL:
-        return <VoteModal {...data} closeModal={onClose} updateData={updateData} />;
+        return <VoteModal {...data} closeModal={onClose} updateData={updateData} showSuccessToastr={showSuccessToastr} showErrorToastr={showErrorToastr} />;
       case PROPOSAL_MODAL:
-        return <ProposalModal {...data} closeModal={onClose} updateData={updateData} />;
+        return <ProposalModal {...data} closeModal={onClose} updateData={updateData} showSuccessToastr={showSuccessToastr} showErrorToastr={showErrorToastr} />;
       default:
         return;
     }

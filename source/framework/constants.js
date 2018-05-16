@@ -1,4 +1,4 @@
-export const LANG_KEY = 'i18nextLng';
+export const LANG_KEY = 'bbr-lang';
 
 export const languages = {
   en: {

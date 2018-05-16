@@ -15,6 +15,10 @@ class VoteModal extends PureComponent {
     data: PropTypes.object,
     closeModal: PropTypes.func,
     updateData: PropTypes.func,
+    //toastr
+    showSuccessToastr: PropTypes.func,
+    showErrorToastr: PropTypes.func,
+    //localization
     t: PropTypes.func
   };
 
@@ -72,7 +76,9 @@ class VoteModal extends PureComponent {
             verificationCode: code
           }));
         })
-        .catch((error) => console.error(error));
+        .catch(() => {
+          this.props.showErrorToastr('', 'Error with get verification code.');
+        });
     }
   };
 
@@ -94,11 +100,11 @@ class VoteModal extends PureComponent {
         if (status === 'OK') {
           this.submitSuccess();
         } else {
-          alert('Something wrong. Try again.')
+          this.props.showErrorToastr('', 'Something wrong. Try again.')
         }
       })
       .catch(() => {
-        alert('Something wrong. Try again.')
+        this.props.showErrorToastr('', 'Something wrong. Try again.')
       })
   };
 
@@ -113,12 +119,14 @@ class VoteModal extends PureComponent {
 
     axios.post('https://boolberry.com/API/doAJAX.php', data)
       .then(() => {
+        this.props.showSuccessToastr('Congratulation!', 'Your proposal submitted.');
         closeModal();
         Session.clear(VERIFICATION_CODE_KEY);
-        // window.location.reload()
         setTimeout(updateData, 1000);
       })
-      .catch((error) => console.error(error))
+      .catch(() => {
+        this.props.showErrorToastr('', 'Something wrong. Try again.')
+      })
   };
 
   renderUpvotedBy = (items) => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 import Header from './Header/Header';
 // import Hero from './Hero/Hero';
@@ -20,8 +21,12 @@ class App extends Component {
     super(props);
     let initialLang = LocalStorage.get(LANG_KEY);
 
+    if (initialLang !== 'en' || 'zh') {
+      initialLang = 'en';
+    }
+
     this.state = {
-      activeLang: initialLang || 'en',
+      activeLang: initialLang,
       showModal: false,
       titleModal: '',
       typeModal: '',
@@ -52,25 +57,45 @@ class App extends Component {
           tableData: data
         }))
       })
-      .catch((error) => console.error(error));
+      .catch((error) => this.showErrorToastr('Error', error));
   };
 
-  closeModal = () => {
-    this.setState({
-      showModal: false,
-      titleModal: '',
-      typeModal: '',
-      dataModal: {}
-    });
+  closeModal = () => this.setState(() => ({
+    showModal: false,
+    titleModal: '',
+    typeModal: '',
+    dataModal: {}
+  }));
+
+  showModal = (title, type, data) => this.setState(() => ({
+    showModal: true,
+    titleModal: title,
+    typeModal: type,
+    dataModal: data
+  }));
+
+  showSuccessToastr = (title = '', message = '') => {
+    if (!title) {
+      title = 'Success!'
+    }
+
+    if (!message) {
+      message = 'Everything went well.'
+    }
+
+    NotificationManager.success(message, title);
   };
 
-  showModal = (title, type, data) => {
-    this.setState({
-      showModal: true,
-      titleModal: title,
-      typeModal: type,
-      dataModal: data
-    });
+  showErrorToastr = (title = '', message = '') => {
+    if (!title) {
+      title = 'Error!'
+    }
+
+    if (!message) {
+      message = 'Something wrong, try later'
+    }
+
+    NotificationManager.error(message, title);
   };
 
   render() {
@@ -89,12 +114,16 @@ class App extends Component {
       dataModal,
       title: 'Modal',
       onClose: this.closeModal,
-      updateData: this.updateTableData
+      updateData: this.updateTableData,
+      showSuccessToastr: this.showSuccessToastr,
+      showErrorToastr: this.showErrorToastr
     };
 
     const fundingProps = {
       tableData,
-      showModal: this.showModal
+      showModal: this.showModal,
+      showSuccessToastr: this.showSuccessToastr,
+      showErrorToastr: this.showErrorToastr
     };
 
     const footerColumns = [
@@ -265,6 +294,7 @@ class App extends Component {
         {/*<Hero />*/}
         <Funding {...fundingProps} />
         <Footer columns={footerColumns} />
+        <NotificationContainer />
         {showModal && <ModalContainer {...modalProps} />}
       </div>
     )

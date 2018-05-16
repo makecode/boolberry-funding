@@ -16,12 +16,16 @@ import { PROGRESS_MODAL, CONTRIBUTE_MODAL, VOTE_MODAL, PROPOSAL_MODAL } from '..
 class Funding extends PureComponent {
   static propTypes = {
     tableData: PropTypes.object,
-    showModal: PropTypes.func
+    showModal: PropTypes.func,
+    showSuccessToastr: PropTypes.func,
+    showErrorToastr: PropTypes.func
   };
 
   static defaultProps = {
     tableData: {},
-    showModal: () => {}
+    showModal: () => {},
+    showSuccessToastr: () => {},
+    showErrorToastr: () => {}
   };
 
   onRowClick = (title, type, data) => this.props.showModal(title, type, { data });

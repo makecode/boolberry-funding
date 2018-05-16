@@ -12,6 +12,9 @@ import App from './source/AppRouter';
 // reset-css
 import 'ress';
 
+// styles for notification system
+import 'react-notifications/lib/notifications.css';
+
 // core styles file
 import './source/styles/styles.sass';
 

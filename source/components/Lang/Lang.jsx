@@ -40,9 +40,9 @@ class Lang extends PureComponent {
 
     return (
       <div className={`lang ${className}`}>
-        <span className="lang__active">{languages[activeLang].activeText}</span>
-        <span className="lang__icon" />
-        <ul className="lang__list">
+        <span className='lang__active'>{languages[activeLang].activeText}</span>
+        <span className='lang__icon' />
+        <ul className='lang__list'>
           {this.renderLanguagesList()}
         </ul>
       </div>

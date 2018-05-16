@@ -12,6 +12,12 @@ class ProposalModal extends PureComponent {
   static propTypes = {
     closeModal: PropTypes.func,
     updateData: PropTypes.func,
+
+    //toastr
+    showSuccessToastr: PropTypes.func,
+    showErrorToastr: PropTypes.func,
+
+    //localization
     t: PropTypes.func
   };
 
@@ -85,11 +91,11 @@ class ProposalModal extends PureComponent {
         if (status === 'OK') {
           this.submitSuccess();
         } else {
-          alert('Something wrong. Try again.')
+          this.props.showErrorToastr('', 'Something wrong. Try again.');
         }
       })
       .catch(() => {
-        alert('Something wrong. Try again.')
+        this.props.showErrorToastr('', 'Something wrong. Try again.');
       })
   };
 
@@ -106,11 +112,14 @@ class ProposalModal extends PureComponent {
 
     axios.post('https://boolberry.com/API/create_proposal.php', data)
       .then(() => {
+        this.props.showSuccessToastr('Congratulation!', 'Your proposal submitted.');
         closeModal();
         Session.clear(VERIFICATION_CODE_KEY);
         updateData();
       })
-      .catch((error) => console.error(error))
+      .catch(() => {
+        this.props.showErrorToastr('', 'Something wrong. Try again.');
+      })
   };
 
 
@@ -131,7 +140,9 @@ class ProposalModal extends PureComponent {
             verificationCode: code
           }));
         })
-        .catch((error) => console.error(error));
+        .catch(() => {
+          this.props.showErrorToastr('', 'Error with get verification code.');
+        });
     }
   };
 
